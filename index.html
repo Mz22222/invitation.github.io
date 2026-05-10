@@ -200,10 +200,10 @@
         .photos-row {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 2.2rem;
             flex-wrap: wrap;
-            margin: 1rem 0 1.5rem;
+            margin: 1rem 0 3rem;
         }
 
         .photo-item {
@@ -242,14 +242,14 @@
             border: 1px solid #d0d8e8;
         }
 
-        /* левая фотка — приподнята */
         .polaroid-left {
             transform: rotate(-4deg) translateY(-20px);
         }
-        /* правая фотка — очень низко */
+
         .polaroid-right {
             transform: rotate(5deg) translateY(95px);
         }
+
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
             z-index: 10;
@@ -276,10 +276,11 @@
             font-weight: 500;
         }
 
-        /* блок про детей — спущен ниже */
+        /* блок про детей — отступ увеличен */
         .kids-message {
             text-align: center;
-            margin: 4.5rem 0 1rem;
+            margin: 5rem 0 1rem;
+            clear: both;
         }
 
         .kids-title {
@@ -298,15 +299,17 @@
             color: #4a4a6a;
         }
 
-        /* листайте вниз с ромбиками */
+        /* листайте вниз */
         .scroll-hint {
             margin-top: 2rem;
             font-size: 10px;
             letter-spacing: 2px;
-            text-decoration: underline;
+            text-decoration: none;
             cursor: pointer;
             color: #4a6fa5;
             display: inline-block;
+            border-bottom: 1px solid #4a6fa5;
+            padding-bottom: 3px;
         }
 
         .section-title {
@@ -530,6 +533,7 @@
             }
             .photos-row {
                 gap: 1rem;
+                margin-bottom: 2rem;
             }
             .polaroid-left {
                 transform: rotate(-3deg) translateY(-12px);
@@ -538,7 +542,7 @@
                 transform: rotate(4deg) translateY(55px);
             }
             .kids-message {
-                margin: 2.8rem 0 0.8rem;
+                margin: 3.5rem 0 0.8rem;
             }
             .timeline-desc {
                 max-width: 60%;
@@ -608,6 +612,7 @@
                 </div>
             </div>
             
+            <!-- Увеличен отступ между рамками и текстом -->
             <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
@@ -708,7 +713,7 @@
 </audio>
 
 <script>
-    // КАЛЕНДАРЬ с сердечком на 23 мая
+    // КАЛЕНДАРЬ
     function buildMay2026Calendar() {
         const container = document.getElementById('dynamicCalendar');
         if (!container) return;
@@ -847,7 +852,6 @@
         if (seal) seal.addEventListener('click', (e) => e.stopPropagation());
     }
 
-    // скролл
     const scrollHint = document.getElementById('scrollHint');
     if (scrollHint) {
         scrollHint.addEventListener('click', () => {
@@ -855,7 +859,6 @@
         });
     }
 
-    // анимация при скролле
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

@@ -242,11 +242,13 @@
             border: 1px solid #f0e0d6;
         }
 
+        /* левая фотка — приподнята */
         .polaroid-left {
-            transform: rotate(-5deg) translateY(-12px);
+            transform: rotate(-5deg) translateY(-20px);
         }
+        /* правая фотка — сильно опущена (верх на уровне середины левой) */
         .polaroid-right {
-            transform: rotate(6deg) translateY(8px);
+            transform: rotate(6deg) translateY(45px);
         }
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
@@ -529,6 +531,13 @@
             .photos-row {
                 gap: 1.2rem;
             }
+            /* на мобильных уменьшаем сдвиг, но сохраняем эффект */
+            .polaroid-left {
+                transform: rotate(-4deg) translateY(-12px);
+            }
+            .polaroid-right {
+                transform: rotate(5deg) translateY(28px);
+            }
             .timeline-desc {
                 max-width: 60%;
             }
@@ -573,10 +582,10 @@
 <div id="mainPage" class="main-page">
     <div class="main-container">
         <div class="hero-section">
-            <!-- текст "две истории, одна любовь" с увеличенным отступом снизу -->
+            <!-- текст "две истории, одна любовь" -->
             <div class="story-tagline animate-item" style="animation-delay: 0.1s;">❝ две истории, одна любовь ❞</div>
             
-            <!-- фотографии с увеличенным промежутком между ними -->
+            <!-- фотографии с сильным перепадом по высоте -->
             <div class="photos-row">
                 <div class="photo-item">
                     <div class="polaroid-frame polaroid-left">
@@ -602,7 +611,7 @@
                 </div>
             </div>
             
-            <!-- текст про детей с увеличенным отступом сверху -->
+            <!-- текст про детей -->
             <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">

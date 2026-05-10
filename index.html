@@ -193,7 +193,7 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #c47a6b;
-            margin: 0.5rem 0 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
 
@@ -242,7 +242,6 @@
             border: 1px solid #f0e0d6;
         }
 
-        /* левая фотка приподнята выше */
         .polaroid-left {
             transform: rotate(-5deg) translateY(-12px);
         }
@@ -568,6 +567,10 @@
 <div id="mainPage" class="main-page">
     <div class="main-container">
         <div class="hero-section">
+            <!-- СНАЧАЛА текст "две истории, одна любовь" -->
+            <div class="story-tagline animate-item" style="animation-delay: 0.1s;">❝ две истории, одна любовь ❞</div>
+            
+            <!-- ПОТОМ фотографии -->
             <div class="photos-row">
                 <div class="photo-item">
                     <div class="polaroid-frame polaroid-left">
@@ -593,9 +596,8 @@
                 </div>
             </div>
             
-            <div class="story-tagline animate-item" style="animation-delay: 0.2s;">❝ две истории, одна любовь ❞</div>
-            
-            <div class="kids-message animate-item" style="animation-delay: 0.4s;">
+            <!-- ПОТОМ текст про детей -->
+            <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
@@ -604,7 +606,7 @@
                 </div>
             </div>
             
-            <div class="scroll-hint animate-item" style="animation-delay: 0.6s;" id="scrollHint">✦ листайте вниз ✦</div>
+            <div class="scroll-hint animate-item" style="animation-delay: 0.7s;" id="scrollHint">✦ листайте вниз ✦</div>
         </div>
 
         <div class="section fade-on-scroll">

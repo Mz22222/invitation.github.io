@@ -22,97 +22,148 @@
             min-height: 100vh;
         }
 
-        /* ===== СТРАНИЦА-КОНВЕРТ (ЗАСТАВКА) ===== */
+        /* ===== ЗАСТАВКА-КОНВЕРТ (РАЗЪЕЗЖАЮЩАЯСЯ) ===== */
         .cover-page {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #f5f7fc;
-            z-index: 1000;
+            z-index: 2000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
-            opacity: 1;
-            visibility: visible;
         }
 
-        .cover-page.hide {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+        /* Верхняя половинка */
+        .cover-top {
+            flex: 1;
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 2rem;
+            transition: all 0.6s ease;
         }
 
-        .cover-inner {
-            text-align: center;
-            padding: 2rem;
-            animation: gentlePulse 2.5s ease-in-out infinite;
+        /* Нижняя половинка */
+        .cover-bottom {
+            flex: 1;
+            background: #f5f7fc;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 2rem;
+            transition: all 0.6s ease;
+            border-top: 1px solid rgba(74, 111, 165, 0.2);
         }
 
-        @keyframes gentlePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.01); }
-            100% { transform: scale(1); }
-        }
-
-        .invitation-badge {
-            font-size: 0.7rem;
-            letter-spacing: 5px;
+        /* Текст на верхней части */
+        .cover-top-text {
+            color: #f5f7fc;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            color: #4a6fa5;
             margin-bottom: 1.5rem;
+            font-weight: 300;
         }
 
-        .names-cover {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 500;
-            color: #1a1a2e;
-            letter-spacing: -0.5px;
-        }
-
-        .seal {
-            margin: 2rem auto;
-            width: 80px;
-            height: 80px;
+        /* Кликабельная печать по центру (на границе) */
+        .cover-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
             background: #e8edf5;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(26, 26, 46, 0.08);
+            z-index: 2100;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid #ffffff;
         }
 
-        .seal:hover {
-            transform: scale(1.05);
-            background: #dce4f0;
+        .cover-seal:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: #ffffff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .seal-icon {
+        .seal-text {
             font-size: 2.2rem;
             color: #1a1a2e;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        .click-hint {
-            margin-top: 2rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        /* Имена и дата в нижней части */
+        .cover-names {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .cover-names-top {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+        .cover-names-bottom {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+        .cover-ampersand {
+            font-size: 1.8rem;
+            font-weight: 300;
             color: #4a6fa5;
-            border-top: 1px solid #d0d8e8;
-            padding-top: 1.3rem;
+            margin: 0.2rem 0;
+        }
+        .cover-date {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: #4a6fa5;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        .divider-line-small {
+            width: 40px;
+            height: 1px;
+            background: #4a6fa5;
+            margin: 0.8rem auto;
+        }
+
+        /* Анимация при закрытии */
+        .cover-page.hide .cover-top {
+            transform: translateY(-100%);
+        }
+        .cover-page.hide .cover-bottom {
+            transform: translateY(100%);
+        }
+        .cover-page.hide {
+            pointer-events: none;
+            cursor: default;
+        }
+        .cover-page.hide .cover-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            pointer-events: none;
         }
 
         /* ===== ОСНОВНАЯ СТРАНИЦА ===== */
         .main-page {
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 1s ease 0.3s;
             background: #f5f7fc;
             min-height: 100vh;
         }
@@ -276,7 +327,6 @@
             font-weight: 500;
         }
 
-        /* блок про детей — отступ увеличен */
         .kids-message {
             text-align: center;
             margin: 5rem 0 1rem;
@@ -299,7 +349,6 @@
             color: #4a4a6a;
         }
 
-        /* листайте вниз */
         .scroll-hint {
             margin-top: 2rem;
             font-size: 10px;
@@ -559,25 +608,40 @@
             .story-tagline {
                 margin-bottom: 1.8rem;
             }
+            .cover-names-top, .cover-names-bottom {
+                font-size: 1.8rem;
+            }
+            .cover-ampersand {
+                font-size: 1.3rem;
+            }
+            .cover-seal {
+                width: 70px;
+                height: 70px;
+            }
+            .seal-text {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- СТРАНИЦА-КОНВЕРТ -->
+<!-- КОНВЕРТ-ЗАСТАВКА -->
 <div id="coverPage" class="cover-page">
-    <div class="cover-inner">
-        <div class="invitation-badge">✨ СЕМЕЙНОЕ ТОРЖЕСТВО ✨</div>
-        <div class="names-cover">
-            Шахзодбек <span style="font-weight: 300;">&</span> Зара
+    <div class="cover-top">
+        <div class="cover-top-text">ПРИГЛАШЕНИЕ НА СВАДЬБУ</div>
+    </div>
+    <div class="cover-bottom">
+        <div class="cover-names">
+            <div class="cover-names-top">Шахзодбек</div>
+            <div class="cover-ampersand">&</div>
+            <div class="cover-names-bottom">Зара</div>
+            <div class="divider-line-small"></div>
+            <div class="cover-date">23 мая 2026</div>
         </div>
-        <div class="divider-line" style="margin: 1.3rem auto; width: 45px; height: 2px;"></div>
-        <div id="sealButton" class="seal">
-            <span class="seal-icon">📜</span>
-        </div>
-        <div class="click-hint">
-            НАЖМИТЕ НА ПЕЧАТЬ
-        </div>
+    </div>
+    <div id="coverSeal" class="cover-seal">
+        <span class="seal-text">📜</span>
     </div>
 </div>
 
@@ -612,7 +676,6 @@
                 </div>
             </div>
             
-            <!-- Увеличен отступ между рамками и текстом -->
             <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
@@ -702,12 +765,12 @@
     </div>
 </div>
 
-<!-- КНОПКА УПРАВЛЕНИЯ МУЗЫКОЙ -->
+<!-- КНОПКА МУЗЫКИ -->
 <div id="musicControl" class="music-control">
     <span class="music-icon">🎵</span>
 </div>
 
-<!-- АУДИО - ЛОКАЛЬНЫЙ ФАЙЛ -->
+<!-- АУДИО -->
 <audio id="weddingAudio" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -822,10 +885,10 @@
     
     musicControl.addEventListener('click', toggleMusic);
     
-    // открытие конверта
+    // ОТКРЫТИЕ КОНВЕРТА
     const cover = document.getElementById('coverPage');
     const main = document.getElementById('mainPage');
-    const seal = document.getElementById('sealButton');
+    const seal = document.getElementById('coverSeal');
     
     function openInvitation() {
         if (!cover || !main) return;
@@ -838,7 +901,7 @@
             setTimeout(() => {
                 startMusic();
             }, 300);
-        }, 180);
+        }, 800);
     }
     
     if (seal) {
@@ -852,6 +915,7 @@
         if (seal) seal.addEventListener('click', (e) => e.stopPropagation());
     }
 
+    // скролл
     const scrollHint = document.getElementById('scrollHint');
     if (scrollHint) {
         scrollHint.addEventListener('click', () => {
@@ -859,6 +923,7 @@
         });
     }
 
+    // анимация при скролле
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

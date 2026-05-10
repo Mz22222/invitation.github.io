@@ -721,9 +721,9 @@
     <span class="music-icon">🎵</span>
 </div>
 
-<!-- АУДИО - Shape of My Heart (Sting) - проверенная рабочая ссылка -->
-<audio id="weddingAudio" loop preload="auto" crossorigin="anonymous">
-    <source src="https://dl.dropboxusercontent.com/s/5z8x8x8x8x8x8x8/shape-of-my-heart.mp3" type="audio/mpeg">
+<!-- АУДИО - ЛОКАЛЬНЫЙ ФАЙЛ (положите music.mp3 в ту же папку, что и index.html) -->
+<audio id="weddingAudio" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -804,23 +804,11 @@
     updateWeddingTimer();
     setInterval(updateWeddingTimer, 60000);
 
-    // МУЗЫКА - используем альтернативный надежный источник
+    // МУЗЫКА - локальный файл
     const audio = document.getElementById('weddingAudio');
     const musicControl = document.getElementById('musicControl');
     let isMusicPlaying = false;
     let mainPageOpened = false;
-    let musicAttempts = 0;
-    
-    // Несколько источников для музыки (на случай, если один не работает)
-    const musicSources = [
-        "https://cdn.pixabay.com/download/audio/2023/05/15/audio_1f1e1e1e1e.mp3",
-        "https://actions.google.com/sound/545/youtube"
-    ];
-    
-    function setMusicSource(url) {
-        audio.src = url;
-        audio.load();
-    }
     
     function startMusic() {
         if (!mainPageOpened) return;
@@ -830,7 +818,7 @@
             musicControl.classList.remove('muted');
             console.log('Музыка играет');
         }).catch((err) => {
-            console.log('Автовоспроизведение заблокировано. Нажмите на кнопку музыки.', err);
+            console.log('Автовоспроизведение заблокировано браузером. Нажмите на кнопку музыки.', err);
             isMusicPlaying = false;
             musicControl.classList.add('muted');
         });
@@ -846,23 +834,12 @@
                 isMusicPlaying = true;
                 musicControl.classList.remove('muted');
             }).catch((err) => {
-                console.log('Не удалось воспроизвести. Попробуйте ещё раз.');
-                // Пробуем перезагрузить аудио
-                audio.load();
+                console.log('Не удалось воспроизвести. Проверьте, есть ли файл music.mp3 в папке с сайтом');
             });
         }
     }
     
     musicControl.addEventListener('click', toggleMusic);
-    
-    // Если музыка не загружается, пробуем другой источник
-    audio.addEventListener('error', function(e) {
-        console.log('Ошибка загрузки музыки, пробуем другой источник');
-        if (musicAttempts === 0) {
-            musicAttempts++;
-            setMusicSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-        }
-    });
     
     // открытие конверта
     const cover = document.getElementById('coverPage');
@@ -879,7 +856,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 startMusic();
-            }, 500);
+            }, 300);
         }, 180);
     }
     

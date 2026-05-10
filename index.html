@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Приглашение на свадьбу | Шахзодбек & Зара</title>
-    <meta name="description" content="Приглашение на свадьбу Шахзодбека и Зары. 23 мая 2026 года, Караван Сити.">
+    <meta name="description" content="Приглашение на свадьбу Шахзодбека и Зары. 23 мая 2026 года, Караван Сити, Мытищи.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -323,13 +323,13 @@
             border-radius: 2px;
         }
 
+        /* блок про детей — без рамки */
         .kids-message {
             background: #fffaf5;
             padding: 2rem 1.5rem;
             margin: 0 0 1rem 0;
             border-radius: 24px;
             text-align: center;
-            border: 1px solid #f0e0d6;
         }
 
         .kids-title {
@@ -348,6 +348,7 @@
             color: #4a3a2e;
         }
 
+        /* календарь с сердечком */
         .calendar-wrap {
             max-width: 320px;
             margin: 0 auto;
@@ -392,16 +393,21 @@
         .calendar-day.other-month {
             color: #ddc9be;
         }
+        .calendar-day.highlight {
+            position: relative;
+        }
         .calendar-day.highlight .day-number {
-            background: #c25b3a;
-            color: white;
-            font-weight: bold;
-            width: 32px;
-            height: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 32px;
+            font-size: 18px;
+            display: inline-block;
+        }
+        .heart-mark {
+            display: inline-block;
+            font-size: 18px;
+            animation: heartBeat 1s ease infinite;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
         .calendar-caption {
             text-align: center;
@@ -628,7 +634,7 @@
 
         <div class="section fade-on-scroll">
             <div class="kids-message">
-                <div class="kids-title">✨ Узнаёте этих детишек? ✨</div>
+                <div class="kids-title"> Узнаёте этих детишек? </div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
                     Время пролетело незаметно, мы повзрослели<br>
@@ -652,19 +658,20 @@
                     <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
                 </div>
                 <div class="calendar-days" id="dynamicCalendar"></div>
-                <div class="calendar-caption">23 мая — наш особенный день</div>
+                <div class="calendar-caption">23 мая — наш особенный день ❤️</div>
             </div>
         </div>
 
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
             <p style="font-size: 16px; color: #6b4c3a;">Ждем вас по адресу:</p>
+   
+            <div class="address-detail">Олимпийский просп., вл39с1, Мытищи</div>
             <div class="resto-name">Караван Сити</div>
-            <div class="address-detail">Москва</div>
             <div class="divider-line" style="margin: 1.2rem auto;"></div>
-            <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p>
-            <a href="https://yandex.ru/maps/?text=Караван%20Сити%20Москва&ll=37.6175,55.7519&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
-                📍 Проложить маршрут
+            <!-- <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p> -->
+            <a href="https://yandex.ru/maps/?text=Олимпийский+просп.+вл39с1+Мытищи&ll=37.731,55.911&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
+                 Посмотреть на карте
             </a>
         </div>
 
@@ -721,15 +728,13 @@
     <span class="music-icon">🎵</span>
 </div>
 
-<!-- АУДИО -->
+<!-- АУДИО - Shape of My Heart (Sting) инструментальная версия -->
 <audio id="weddingAudio" loop preload="auto">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    <!-- Если ссылка недоступна, используем другой трек (нежная инструментальная мелодия) -->
-    <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0b2c5f6f1.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_9c5c5c5c5c.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-    // КАЛЕНДАРЬ
+    // КАЛЕНДАРЬ с сердечком на 23 мая
     function buildMay2026Calendar() {
         const container = document.getElementById('dynamicCalendar');
         if (!container) return;
@@ -756,7 +761,7 @@
         for (let d = 1; d <= daysInMonth; d++) {
             const isHighlight = (d === highlightDay);
             if (isHighlight) {
-                calendarHTML += `<div class="calendar-day highlight"><span class="day-number">${d}</span></div>`;
+                calendarHTML += `<div class="calendar-day highlight"><span class="heart-mark">❤️</span></div>`;
             } else {
                 calendarHTML += `<div class="calendar-day"><span class="day-number">${d}</span></div>`;
             }
@@ -812,14 +817,13 @@
     let isMusicPlaying = false;
     let mainPageOpened = false;
     
-    // Пытаемся включить автоматически после открытия конверта
     function startMusic() {
         if (!mainPageOpened) return;
         audio.play().then(() => {
             isMusicPlaying = true;
             musicControl.classList.remove('muted');
         }).catch((err) => {
-            console.log('Автовоспроизведение заблокировано браузером. Нажмите на кнопку музыки.');
+            console.log('Автовоспроизведение заблокировано. Нажмите на кнопку музыки.');
             isMusicPlaying = false;
             musicControl.classList.add('muted');
         });
@@ -855,7 +859,6 @@
             main.classList.add('visible');
             mainPageOpened = true;
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Запускаем музыку с небольшой задержкой
             setTimeout(() => {
                 startMusic();
             }, 300);

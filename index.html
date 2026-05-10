@@ -46,7 +46,6 @@
             pointer-events: none;
         }
 
-        /* контент внутри конверта */
         .cover-inner {
             text-align: center;
             padding: 2rem;
@@ -75,15 +74,10 @@
             letter-spacing: -0.5px;
         }
 
-        .ampersand {
-            font-weight: 300;
-            margin: 0 0.25rem;
-        }
-
         .seal {
             margin: 2rem auto;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: #ede3d9;
             border-radius: 50%;
             display: flex;
@@ -91,7 +85,7 @@
             justify-content: center;
             transition: all 0.2s ease;
             cursor: pointer;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .seal:hover {
@@ -100,7 +94,7 @@
         }
 
         .seal-icon {
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             color: #8b7a6b;
         }
 
@@ -114,7 +108,7 @@
             padding-top: 1.3rem;
         }
 
-        /* ===== ОСНОВНАЯ СТРАНИЦА (ПИСЬМО) ===== */
+        /* ===== ОСНОВНАЯ СТРАНИЦА ===== */
         .main-page {
             opacity: 0;
             transition: opacity 1s ease;
@@ -131,32 +125,69 @@
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* фото */
-        .photo-section {
+        /* ===== РАМКА ДЛЯ ФОТОГРАФИЙ (СТИЛЬ ПОЛЯРОИД/ДВОЙНАЯ РАМКА) ===== */
+        .child-photos-section {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .couple-photo {
-            max-width: 260px;
+        .photos-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .polaroid-frame {
+            background: #ffffff;
+            padding: 12px 12px 18px 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            max-width: 180px;
+            width: 45%;
+            min-width: 140px;
+        }
+
+        .polaroid-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        /* двойная рамка — внутренняя линия как в примере */
+        .polaroid-inner {
+            border: 1px solid #e8e0d6;
+            padding: 4px;
+            background: #fff;
+        }
+
+        .polaroid-img {
             width: 100%;
-            margin: 0 auto;
-            border-radius: 50%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 0 0 4px #ffffff, 0 0 0 7px #ede3d9;
-            transition: transform 0.3s ease;
+            display: block;
             background-color: #f2ede7;
         }
 
-        .photo-caption {
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: #b6a99c;
-            margin-top: 0.7rem;
-            text-transform: uppercase;
+        .polaroid-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 12px;
+            color: #8f7e6e;
+            letter-spacing: 0.5px;
+            font-weight: 400;
         }
 
+        .photo-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c2b4a6;
+            margin-bottom: 0.8rem;
+        }
+
+        /* остальные стили */
         .subhead {
             text-align: center;
             font-size: 0.85rem;
@@ -173,7 +204,7 @@
             font-weight: 500;
             text-align: center;
             color: #2c2a29;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             line-height: 1.2;
         }
 
@@ -359,15 +390,14 @@
 </head>
 <body>
 
-<!-- СТРАНИЦА-КОНВЕРТ (ПЕЧАТЬ/ПРИГЛАШЕНИЕ) -->
+<!-- СТРАНИЦА-КОНВЕРТ (ЗАСТАВКА С ПЕЧАТЬЮ) -->
 <div id="coverPage" class="cover-page">
     <div class="cover-inner">
         <div class="invitation-badge">✨ СЕМЕЙНОЕ ТОРЖЕСТВО ✨</div>
         <div class="names-cover">
-            Шахзод <span class="ampersand">&</span> Зара
+            Шахзод <span style="font-weight: 300;">&</span> Зара
         </div>
         <div class="accent-line" style="margin: 1.3rem auto;"></div>
-        <!-- "печать" по центру — кликабельный элемент -->
         <div id="sealButton" class="seal">
             <span class="seal-icon">📜</span>
         </div>
@@ -380,16 +410,37 @@
     </div>
 </div>
 
-<!-- ОСНОВНАЯ СТРАНИЦА (письмо с информацией) -->
-<div id="mainPage" class="main-page" style="opacity: 0;">
+<!-- ОСНОВНАЯ СТРАНИЦА (с детскими фото в рамке) -->
+<div id="mainPage" class="main-page">
     <div class="container">
-        <!-- фото -->
-        <div class="photo-section fade-up">
-            <img class="couple-photo" 
-                 src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop" 
-                 alt="Шахзод и Зара"
-                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/f2ede7/c0a080?text=Наше+фото'">
-            <div class="photo-caption">✨ Шахзод & Зара ✨</div>
+        
+        <!-- БЛОК С ДЕТСКИМИ ФОТОГРАФИЯМИ В РАМКЕ (стиль "поляроид" + двойная рамка) -->
+        <div class="child-photos-section fade-up">
+            <div class="photo-badge">✨ ИСТОРИЯ ЛЮБВИ ✨</div>
+            <div class="photos-row">
+                <!-- ФОТО ШАХЗОДА (детское) -->
+                <div class="polaroid-frame">
+                    <div class="polaroid-inner">
+                        <img class="polaroid-img" 
+                             src="https://images.unsplash.com/photo-1503454537195-1dcabb73ff93?w=300&h=300&fit=crop" 
+                             alt="Шахзод в детстве"
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Шахзод'">
+                    </div>
+                    <div class="polaroid-caption">Шахзод</div>
+                </div>
+                <!-- ФОТО ЗАРЫ (детское) -->
+                <div class="polaroid-frame">
+                    <div class="polaroid-inner">
+                        <img class="polaroid-img" 
+                             src="https://images.unsplash.com/photo-1519057181626-73f2b5eb00af?w=300&h=300&fit=crop" 
+                             alt="Зара в детстве"
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Зара'">
+                    </div>
+                    <div class="polaroid-caption">Зара</div>
+                </div>
+            </div>
+            <div style="font-size: 0.7rem; color: #b7aa9d; margin-top: 0.8rem;">❝ из самого начала ❞</div>
+            <div class="accent-line" style="margin: 1.2rem auto;"></div>
         </div>
 
         <div class="fade-up delay-1">
@@ -462,44 +513,33 @@
 
 <script>
     (function() {
-        // Элементы
         const cover = document.getElementById('coverPage');
         const main = document.getElementById('mainPage');
         const seal = document.getElementById('sealButton');
         
-        // Функция открытия "письма"
         function openInvitation() {
             if (!cover || !main) return;
-            // Скрываем cover-страницу с плавным исчезновением
             cover.classList.add('hide');
-            // Показываем основную страницу с эффектом проявления
             setTimeout(() => {
                 main.style.opacity = '1';
                 main.classList.add('visible');
-                // Небольшой скролл наверх, если нужно
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 180);
         }
         
-        // Клик по печати / по всей заставке (удобно: и на печать, и на фон)
         if (seal) {
             seal.addEventListener('click', (e) => {
                 e.stopPropagation();
                 openInvitation();
             });
         }
-        // Чтобы открыть можно было кликнув в любом месте обложки (по желанию) — раскомментировать если нужно
         if (cover) {
             cover.addEventListener('click', (e) => {
-                // если клик именно по cover, но не по внутренней кнопке? чтобы дважды не сработало, проверим
-                // но для удобства клик по всему cover тоже открывает (кроме печати, там уже есть)
                 openInvitation();
             });
-            // предотвращаем двойной вызов при клике на печать
-            seal.addEventListener('click', (e) => e.stopPropagation());
+            if (seal) seal.addEventListener('click', (e) => e.stopPropagation());
         }
         
-        // Таймер
         const weddingDate = new Date(2026, 4, 23, 16, 30, 0);
         function updateTimer() {
             const now = new Date().getTime();

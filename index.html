@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Приглашение на свадьбу | Шахзодбек & Зара</title>
-    <meta name="description" content="Приглашение на свадьбу Шахзодбека и Зары. 23 мая 2026 года, Караван Сити, Мытищи.">
+    <title>Приглашение на свадьбу | Шахзод & Зара</title>
+    <meta name="description" content="Приглашение на свадьбу Шахзода и Зары. 23 мая 2026 года, Караван Сити, Мытищи.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -36,7 +36,6 @@
             cursor: pointer;
         }
 
-        /* Верхняя половинка */
         .cover-top {
             flex: 1;
             background: #1a1a2e;
@@ -48,7 +47,6 @@
             transition: all 0.6s ease;
         }
 
-        /* Нижняя половинка */
         .cover-bottom {
             flex: 1;
             background: #f5f7fc;
@@ -61,7 +59,6 @@
             border-top: 1px solid rgba(74, 111, 165, 0.2);
         }
 
-        /* Текст на верхней части */
         .cover-top-text {
             color: #f5f7fc;
             font-size: 0.85rem;
@@ -71,7 +68,6 @@
             font-weight: 300;
         }
 
-        /* Кликабельная кнопка по центру */
         .cover-seal {
             position: absolute;
             top: 50%;
@@ -102,7 +98,6 @@
             text-transform: uppercase;
         }
 
-        /* Имена и дата в нижней части — крупнее */
         .cover-names {
             text-align: center;
             margin-top: 1rem;
@@ -134,8 +129,6 @@
             margin-top: 0.8rem;
             font-weight: 400;
         }
-
-        /* Черточка длиннее */
         .divider-line-small {
             width: 70px;
             height: 1px;
@@ -143,7 +136,6 @@
             margin: 1rem auto;
         }
 
-        /* Анимация при закрытии */
         .cover-page.hide .cover-top {
             transform: translateY(-100%);
         }
@@ -182,7 +174,7 @@
             padding: 2rem 2rem;
         }
 
-        /* === КНОПКА МУЗЫКИ === */
+        /* КНОПКА МУЗЫКИ */
         .music-control {
             position: fixed;
             bottom: 20px;
@@ -215,7 +207,7 @@
             opacity: 0.5;
         }
 
-        /* === ГЛАВНАЯ СЕКЦИЯ === */
+        /* ГЛАВНАЯ СЕКЦИЯ */
         .hero-section {
             text-align: center;
             padding: 2rem 1.5rem 2rem;
@@ -254,7 +246,7 @@
             align-items: flex-start;
             gap: 2.2rem;
             flex-wrap: wrap;
-            margin: 1rem 0 3rem;
+            margin: 1rem 0 4rem;
         }
 
         .photo-item {
@@ -296,11 +288,9 @@
         .polaroid-left {
             transform: rotate(-4deg) translateY(-20px);
         }
-
         .polaroid-right {
             transform: rotate(5deg) translateY(95px);
         }
-
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
             z-index: 10;
@@ -327,6 +317,7 @@
             font-weight: 500;
         }
 
+        /* блок про детей — обновлённый текст */
         .kids-message {
             text-align: center;
             margin: 5rem 0 1rem;
@@ -347,6 +338,11 @@
             font-size: 17px;
             line-height: 1.5;
             color: #4a4a6a;
+        }
+
+        .highlight {
+            color: #4a6fa5;
+            font-weight: 600;
         }
 
         .scroll-hint {
@@ -582,7 +578,7 @@
             }
             .photos-row {
                 gap: 1rem;
-                margin-bottom: 2rem;
+                margin-bottom: 2.5rem;
             }
             .polaroid-left {
                 transform: rotate(-3deg) translateY(-12px);
@@ -638,7 +634,7 @@
     </div>
     <div class="cover-bottom">
         <div class="cover-names">
-            <div class="cover-names-top">Шахзодбек</div>
+            <div class="cover-names-top">Шахзод</div>
             <div class="cover-ampersand">&</div>
             <div class="cover-names-bottom">Зара</div>
             <div class="divider-line-small"></div>
@@ -662,8 +658,8 @@
                         <div class="polaroid-inner">
                             <img class="polaroid-img" 
                                  src="shah.jpg" 
-                                 alt="Шахзодбек"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/e8edf5/4a6fa5?text=Шахзодбек'">
+                                 alt="Шахзод"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/e8edf5/4a6fa5?text=Шахзод'">
                         </div>
                         <div class="polaroid-caption">жених</div>
                     </div>
@@ -681,12 +677,14 @@
                 </div>
             </div>
             
+            <!-- ОБНОВЛЁННЫЙ ТЕКСТ -->
             <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
-                    Время пролетело незаметно, мы повзрослели<br>
-                    и приняли решение пожениться!
+                    Когда-то мы были детьми, беззаботными и весёлыми.<br>
+                    А потом выросли, нашли друг друга...<br>
+                    и поняли, что хотим быть вместе <span class="highlight">навсегда</span>!
                 </div>
             </div>
             
@@ -764,7 +762,7 @@
         </div>
 
         <div class="footer fade-on-scroll">
-            Шахзодбек & Зара<br>
+            Шахзод & Зара<br>
             23 мая 2026
         </div>
     </div>
@@ -920,7 +918,6 @@
         if (seal) seal.addEventListener('click', (e) => e.stopPropagation());
     }
 
-    // скролл
     const scrollHint = document.getElementById('scrollHint');
     if (scrollHint) {
         scrollHint.addEventListener('click', () => {
@@ -928,7 +925,6 @@
         });
     }
 
-    // анимация при скролле
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

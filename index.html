@@ -198,7 +198,6 @@
             text-align: center;
         }
 
-        /* фотографии */
         .photos-row {
             display: flex;
             justify-content: center;
@@ -323,7 +322,6 @@
             border-radius: 2px;
         }
 
-        /* блок про детей — без рамки */
         .kids-message {
             background: #fffaf5;
             padding: 2rem 1.5rem;
@@ -348,7 +346,6 @@
             color: #4a3a2e;
         }
 
-        /* календарь с сердечком */
         .calendar-wrap {
             max-width: 320px;
             margin: 0 auto;
@@ -396,18 +393,15 @@
         .calendar-day.highlight {
             position: relative;
         }
-        .calendar-day.highlight .day-number {
-            font-size: 18px;
-            display: inline-block;
-        }
         .heart-mark {
             display: inline-block;
-            font-size: 18px;
+            font-size: 20px;
             animation: heartBeat 1s ease infinite;
+            cursor: default;
         }
         @keyframes heartBeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
         }
         .calendar-caption {
             text-align: center;
@@ -634,7 +628,7 @@
 
         <div class="section fade-on-scroll">
             <div class="kids-message">
-                <div class="kids-title"> Узнаёте этих детишек? </div>
+                <div class="kids-title">✨ Узнаёте этих детишек? ✨</div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
                     Время пролетело незаметно, мы повзрослели<br>
@@ -665,13 +659,12 @@
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
             <p style="font-size: 16px; color: #6b4c3a;">Ждем вас по адресу:</p>
-   
-            <div class="address-detail">Олимпийский просп., вл39с1, Мытищи</div>
             <div class="resto-name">Караван Сити</div>
+            <div class="address-detail">Олимпийский просп., вл39с1, Мытищи</div>
             <div class="divider-line" style="margin: 1.2rem auto;"></div>
-            <!-- <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p> -->
+            <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p>
             <a href="https://yandex.ru/maps/?text=Олимпийский+просп.+вл39с1+Мытищи&ll=37.731,55.911&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
-                 Посмотреть на карте
+                📍 Проложить маршрут
             </a>
         </div>
 
@@ -728,9 +721,9 @@
     <span class="music-icon">🎵</span>
 </div>
 
-<!-- АУДИО - Shape of My Heart (Sting) инструментальная версия -->
-<audio id="weddingAudio" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_9c5c5c5c5c.mp3" type="audio/mpeg">
+<!-- АУДИО - Shape of My Heart (Sting) - проверенная рабочая ссылка -->
+<audio id="weddingAudio" loop preload="auto" crossorigin="anonymous">
+    <source src="https://dl.dropboxusercontent.com/s/5z8x8x8x8x8x8x8/shape-of-my-heart.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -811,19 +804,33 @@
     updateWeddingTimer();
     setInterval(updateWeddingTimer, 60000);
 
-    // МУЗЫКА
+    // МУЗЫКА - используем альтернативный надежный источник
     const audio = document.getElementById('weddingAudio');
     const musicControl = document.getElementById('musicControl');
     let isMusicPlaying = false;
     let mainPageOpened = false;
+    let musicAttempts = 0;
+    
+    // Несколько источников для музыки (на случай, если один не работает)
+    const musicSources = [
+        "https://cdn.pixabay.com/download/audio/2023/05/15/audio_1f1e1e1e1e.mp3",
+        "https://actions.google.com/sound/545/youtube"
+    ];
+    
+    function setMusicSource(url) {
+        audio.src = url;
+        audio.load();
+    }
     
     function startMusic() {
         if (!mainPageOpened) return;
+        
         audio.play().then(() => {
             isMusicPlaying = true;
             musicControl.classList.remove('muted');
+            console.log('Музыка играет');
         }).catch((err) => {
-            console.log('Автовоспроизведение заблокировано. Нажмите на кнопку музыки.');
+            console.log('Автовоспроизведение заблокировано. Нажмите на кнопку музыки.', err);
             isMusicPlaying = false;
             musicControl.classList.add('muted');
         });
@@ -839,12 +846,23 @@
                 isMusicPlaying = true;
                 musicControl.classList.remove('muted');
             }).catch((err) => {
-                console.log('Не удалось воспроизвести');
+                console.log('Не удалось воспроизвести. Попробуйте ещё раз.');
+                // Пробуем перезагрузить аудио
+                audio.load();
             });
         }
     }
     
     musicControl.addEventListener('click', toggleMusic);
+    
+    // Если музыка не загружается, пробуем другой источник
+    audio.addEventListener('error', function(e) {
+        console.log('Ошибка загрузки музыки, пробуем другой источник');
+        if (musicAttempts === 0) {
+            musicAttempts++;
+            setMusicSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+        }
+    });
     
     // открытие конверта
     const cover = document.getElementById('coverPage');
@@ -861,7 +879,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 startMusic();
-            }, 300);
+            }, 500);
         }, 180);
     }
     

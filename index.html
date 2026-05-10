@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Шахзод & Зара | Приглашение на свадьбу</title>
-    <meta name="description" content="Приглашение на свадьбу Шахзода и Зары. 23 мая 2026 года, Караван Сити. Ждём вас разделить с нами этот особенный день.">
-    <!-- Предзагрузка шрифтов для лучшей производительности -->
+    <title>Приглашение на свадьбу | Шахзод & Зара</title>
+    <meta name="description" content="Приглашение на свадьбу Шахзода и Зары. 23 мая 2026 года, Караван Сити.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -17,48 +16,145 @@
         }
 
         body {
-            background-color: #fefaf6;
-            color: #2c2a29;
             font-family: 'Inter', sans-serif;
-            line-height: 1.4;
-            scroll-behavior: smooth;
+            background-color: #fefaf6;
+            overflow-x: hidden;
         }
 
-        /* минималистичный контейнер */
+        /* ===== СТРАНИЦА-КОНВЕРТ (ЗАСТАВКА) ===== */
+        .cover-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fefaf6;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cover-page.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* контент внутри конверта */
+        .cover-inner {
+            text-align: center;
+            padding: 2rem;
+            animation: gentlePulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
+        .invitation-badge {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #b7aa9d;
+            margin-bottom: 1.5rem;
+        }
+
+        .names-cover {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 500;
+            color: #2c2a29;
+            letter-spacing: -0.5px;
+        }
+
+        .ampersand {
+            font-weight: 300;
+            margin: 0 0.25rem;
+        }
+
+        .seal {
+            margin: 2rem auto;
+            width: 70px;
+            height: 70px;
+            background: #ede3d9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .seal:hover {
+            transform: scale(1.05);
+            background: #e6d9ce;
+        }
+
+        .seal-icon {
+            font-size: 1.9rem;
+            color: #8b7a6b;
+        }
+
+        .click-hint {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c7bcb0;
+            border-top: 1px solid #f0e8e0;
+            padding-top: 1.3rem;
+        }
+
+        /* ===== ОСНОВНАЯ СТРАНИЦА (ПИСЬМО) ===== */
+        .main-page {
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-color: #fefaf6;
+        }
+
+        .main-page.visible {
+            opacity: 1;
+        }
+
         .container {
             max-width: 680px;
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* разделители / акценты */
-        .accent-line {
-            width: 45px;
-            height: 1px;
-            background-color: #c0b7ae;
-            margin: 1.6rem auto;
-        }
-
-        .accent-line.long {
-            width: 70px;
-        }
-
-        /* заголовки */
-        .names {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.4rem;
-            font-weight: 500;
-            letter-spacing: -0.5px;
+        /* фото */
+        .photo-section {
             text-align: center;
-            color: #2c2a29;
-            margin-top: 1rem;
-            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
 
-        @media (max-width: 500px) {
-            .names {
-                font-size: 2.6rem;
-            }
+        .couple-photo {
+            max-width: 260px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 0 0 4px #ffffff, 0 0 0 7px #ede3d9;
+            transition: transform 0.3s ease;
+            background-color: #f2ede7;
+        }
+
+        .photo-caption {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #b6a99c;
+            margin-top: 0.7rem;
+            text-transform: uppercase;
         }
 
         .subhead {
@@ -71,6 +167,27 @@
             font-weight: 400;
         }
 
+        .names {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem;
+            font-weight: 500;
+            text-align: center;
+            color: #2c2a29;
+            margin-top: 1rem;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 500px) {
+            .names { font-size: 2.6rem; }
+        }
+
+        .accent-line {
+            width: 45px;
+            height: 1px;
+            background-color: #c0b7ae;
+            margin: 1.6rem auto;
+        }
+
         .invite-text {
             text-align: center;
             font-size: 1rem;
@@ -81,14 +198,29 @@
             line-height: 1.5;
         }
 
-        /* карточка с деталями */
         .detail-card {
             background-color: #ffffff;
             border-radius: 24px;
             padding: 2rem 1.8rem;
-            margin: 2.5rem 0;
-            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+            margin: 2rem 0;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.03);
             border: 1px solid #f0ebe4;
+        }
+
+        .date-big {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin: 0.5rem 0 0.2rem;
+            color: #2c2a29;
+        }
+
+        .location {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #7e7368;
         }
 
         .event-item {
@@ -97,7 +229,6 @@
             justify-content: space-between;
             flex-wrap: wrap;
             margin-bottom: 1.5rem;
-            font-size: 1rem;
             border-bottom: 1px dashed #ebe5dd;
             padding-bottom: 1rem;
         }
@@ -111,7 +242,6 @@
         .event-label {
             font-weight: 500;
             color: #6b6258;
-            letter-spacing: 0.3px;
             text-transform: uppercase;
             font-size: 0.8rem;
         }
@@ -119,26 +249,8 @@
         .event-value {
             font-weight: 500;
             color: #2c2a29;
-            text-align: right;
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
-        }
-
-        .date-big {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 500;
-            text-align: center;
-            margin: 0.5rem 0 0.2rem;
-            color: #2c2a29;
-            letter-spacing: -0.2px;
-        }
-
-        .location {
-            text-align: center;
-            margin-top: 0.5rem;
-            font-size: 1rem;
-            color: #7e7368;
         }
 
         .map-link {
@@ -148,20 +260,14 @@
             color: #a58e7a;
             text-decoration: none;
             border-bottom: 0.5px solid #ddd2c7;
-            transition: color 0.2s;
         }
 
-        .map-link:hover {
-            color: #7c5f4a;
-        }
-
-        /* таймер */
         .countdown-wrapper {
             background-color: #fefaf6;
             border-radius: 44px;
             padding: 1.6rem 1rem;
             text-align: center;
-            margin: 1rem 0 1rem;
+            margin: 1rem 0;
             border: 1px solid #e7dfd7;
         }
 
@@ -177,11 +283,6 @@
             display: flex;
             justify-content: center;
             gap: 1.2rem;
-            font-family: 'Inter', monospace;
-        }
-
-        .timer-block {
-            text-align: center;
         }
 
         .timer-number {
@@ -192,8 +293,6 @@
             min-width: 62px;
             border-radius: 16px;
             color: #2c2a29;
-            font-feature-settings: 'tnum';
-            letter-spacing: 1px;
         }
 
         .timer-label {
@@ -203,43 +302,12 @@
             margin-top: 0.3rem;
         }
 
-        /* кнопка-акцент */
-        .action-btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 2rem auto 0;
-            background-color: #2c2a29;
-            color: white;
-            text-align: center;
-            padding: 0.9rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            transition: background 0.25s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .action-btn:hover {
-            background-color: #4f4842;
-        }
-
-        /* dress code минималистично */
         .dresscode {
             text-align: center;
             margin: 2rem 0 1.2rem;
-            padding: 1rem 1rem;
+            padding: 1rem;
             border-top: 1px solid #f0eae2;
             border-bottom: 1px solid #f0eae2;
-        }
-
-        .dresscode p {
-            font-size: 0.85rem;
-            color: #6a5f56;
-            letter-spacing: 0.3px;
         }
 
         .palette {
@@ -253,11 +321,9 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background-color: #ddd;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* строчка "Дресс-код" */
         .soft-text {
             font-size: 0.7rem;
             letter-spacing: 1px;
@@ -278,20 +344,13 @@
             margin: 1rem 0;
         }
 
-        /* анимация fadein */
         .fade-up {
-            opacity: 0;
-            transform: translateY(16px);
             animation: fadeUp 0.8s ease forwards;
         }
-
         @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
@@ -299,128 +358,163 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- имена + сердечко (минимализм) -->
-    <div class="fade-up">
-        <div class="subhead">САМЫЙ НЕЖНЫЙ ДЕНЬ</div>
-        <div class="names">
-            Шахзод <span style="font-weight: 300;">&</span> Зара
+
+<!-- СТРАНИЦА-КОНВЕРТ (ПЕЧАТЬ/ПРИГЛАШЕНИЕ) -->
+<div id="coverPage" class="cover-page">
+    <div class="cover-inner">
+        <div class="invitation-badge">✨ СЕМЕЙНОЕ ТОРЖЕСТВО ✨</div>
+        <div class="names-cover">
+            Шахзод <span class="ampersand">&</span> Зара
         </div>
-        <div class="accent-line"></div>
-        <div class="invite-text">
-            Мы будем счастливы видеть вас среди наших близких,
-            когда наши сердца соединятся навсегда.
+        <div class="accent-line" style="margin: 1.3rem auto;"></div>
+        <!-- "печать" по центру — кликабельный элемент -->
+        <div id="sealButton" class="seal">
+            <span class="seal-icon">📜</span>
+        </div>
+        <div class="click-hint">
+            НАЖМИТЕ НА ПЕЧАТЬ, ЧТОБЫ ОТКРЫТЬ ПРИГЛАШЕНИЕ
+        </div>
+        <div style="font-size: 0.65rem; margin-top: 1.5rem; color: #cdc2b6;">
+            ваше присутствие — главный подарок
         </div>
     </div>
+</div>
 
-    <!-- основная информация: дата, место, сбор -->
-    <div class="detail-card fade-up delay-1">
-        <div class="date-big">23.05.2026</div>
-        <div class="location">
-            Суббота · 16:30 сбор гостей
-        </div>
-        <div class="accent-line long" style="margin: 1.2rem auto 1rem;"></div>
-
-        <div class="event-item">
-            <span class="event-label">Сбор гостей</span>
-            <span class="event-value">16:30</span>
-        </div>
-        <div class="event-item">
-            <span class="event-label">Начало церемонии</span>
-            <span class="event-value">17:00</span>
-        </div>
-        <div class="event-item">
-            <span class="event-label">Место проведения</span>
-            <span class="event-value">Караван Сити</span>
-        </div>
-        <div class="event-item">
-            <span class="event-label">Праздничный банкет</span>
-            <span class="event-value">до 23:00</span>
+<!-- ОСНОВНАЯ СТРАНИЦА (письмо с информацией) -->
+<div id="mainPage" class="main-page" style="opacity: 0;">
+    <div class="container">
+        <!-- фото -->
+        <div class="photo-section fade-up">
+            <img class="couple-photo" 
+                 src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop" 
+                 alt="Шахзод и Зара"
+                 onerror="this.onerror=null; this.src='https://placehold.co/400x400/f2ede7/c0a080?text=Наше+фото'">
+            <div class="photo-caption">✨ Шахзод & Зара ✨</div>
         </div>
 
-        <!-- ссылка на карту (Караван Сити) -->
-        <div style="text-align: center; margin-top: 1.2rem;">
-            <a href="https://yandex.ru/maps/?text=Караван%20Сити%20Москва&ll=37.6175,55.7519&z=16" target="_blank" rel="noopener noreferrer" class="map-link">
-                📍 Открыть карту Караван Сити
-            </a>
-        </div>
-    </div>
-
-    <!-- таймер до события (23.05.2026) -->
-    <div class="countdown-wrapper fade-up delay-2">
-        <div class="timer-title">До нашей свадьбы осталось</div>
-        <div class="timer" id="wedding-timer">
-            <div class="timer-block">
-                <div class="timer-number" id="days">00</div>
-                <div class="timer-label">ДНЕЙ</div>
-            </div>
-            <div class="timer-block">
-                <div class="timer-number" id="hours">00</div>
-                <div class="timer-label">ЧАСОВ</div>
-            </div>
-            <div class="timer-block">
-                <div class="timer-number" id="minutes">00</div>
-                <div class="timer-label">МИНУТ</div>
-            </div>
-            <div class="timer-block">
-                <div class="timer-number" id="seconds">00</div>
-                <div class="timer-label">СЕКУНД</div>
+        <div class="fade-up delay-1">
+            <div class="subhead">САМЫЙ НЕЖНЫЙ ДЕНЬ</div>
+            <div class="names">Шахзод <span style="font-weight: 300;">&</span> Зара</div>
+            <div class="accent-line"></div>
+            <div class="invite-text">
+                Мы будем счастливы видеть вас среди наших близких,<br>
+                когда наши сердца соединятся навсегда.
             </div>
         </div>
-    </div>
 
-    <!-- дресс-код (минималистичная палитра) – без анкеты, только атмосфера -->
-    <div class="dresscode fade-up delay-3">
-        <div class="soft-text">✨ Дресс-код ✨</div>
-        <p style="margin-top: 8px;">Элегантный образ приветствуется.<br>Мы будем рады видеть вас в светлых, нежных тонах — свобода творчества, но без строгих рамок.</p>
-        <div class="palette">
-            <div class="color-dot" style="background-color: #F3EBE1;"></div>
-            <div class="color-dot" style="background-color: #D1C7BC;"></div>
-            <div class="color-dot" style="background-color: #B09A86;"></div>
-            <div class="color-dot" style="background-color: #F7E3D3;"></div>
+        <div class="detail-card fade-up delay-2">
+            <div class="date-big">23.05.2026</div>
+            <div class="location">Суббота · 16:30 сбор гостей</div>
+            <div class="accent-line long" style="margin: 1.2rem auto;"></div>
+            <div class="event-item">
+                <span class="event-label">Сбор гостей</span>
+                <span class="event-value">16:30</span>
+            </div>
+            <div class="event-item">
+                <span class="event-label">Начало церемонии</span>
+                <span class="event-value">17:00</span>
+            </div>
+            <div class="event-item">
+                <span class="event-label">Место проведения</span>
+                <span class="event-value">Караван Сити</span>
+            </div>
+            <div class="event-item">
+                <span class="event-label">Праздничный банкет</span>
+                <span class="event-value">до 23:00</span>
+            </div>
+            <div style="text-align: center; margin-top: 1.2rem;">
+                <a href="https://yandex.ru/maps/?text=Караван%20Сити%20Москва&ll=37.6175,55.7519&z=16" target="_blank" class="map-link">
+                    📍 Открыть карту Караван Сити
+                </a>
+            </div>
         </div>
-        <p style="font-size:0.75rem; margin-top:12px;">Будем рады вашему комфорту и вдохновению</p>
-    </div>
 
-    <!-- небольшая фраза-акцент: без анкеты, просто тёплые слова -->
-    <div class="fade-up delay-4" style="text-align: center; margin: 1rem 0 2rem;">
-        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: #ad927c; font-size: 1rem;">
-            “Самое важное — ваше присутствие и тепло сердец”
+        <div class="countdown-wrapper fade-up delay-3">
+            <div class="timer-title">До нашей свадьбы осталось</div>
+            <div class="timer" id="wedding-timer">
+                <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">ДНЕЙ</div></div>
+                <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">ЧАСОВ</div></div>
+                <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">МИНУТ</div></div>
+                <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">СЕКУНД</div></div>
+            </div>
         </div>
-        <hr>
-        <div style="font-size: 0.75rem; color: #b3a294; letter-spacing: 2px; margin-top: 0.8rem;">
-            Ждём вас в Караван Сити
-        </div>
-    </div>
 
-    <!-- footer с пожеланием -->
-    <footer>
-        Шахзод & Зара · 23 мая 2026
-    </footer>
+        <div class="dresscode fade-up delay-4">
+            <div class="soft-text">✨ Дресс-код ✨</div>
+            <p style="margin-top: 8px;">Элегантный образ приветствуется.<br>Мы будем рады видеть вас в светлых, нежных тонах.</p>
+            <div class="palette">
+                <div class="color-dot" style="background-color: #F3EBE1;"></div>
+                <div class="color-dot" style="background-color: #D1C7BC;"></div>
+                <div class="color-dot" style="background-color: #B09A86;"></div>
+                <div class="color-dot" style="background-color: #F7E3D3;"></div>
+            </div>
+        </div>
+
+        <div class="fade-up delay-4" style="text-align: center; margin: 1rem 0 2rem;">
+            <div style="font-family: 'Playfair Display', serif; font-style: italic; color: #ad927c;">
+                “Самое важное — ваше присутствие и тепло сердец”
+            </div>
+            <hr>
+        </div>
+        <footer>Шахзод & Зара · 23 мая 2026</footer>
+    </div>
 </div>
 
 <script>
     (function() {
-        // Дата свадьбы: 23 мая 2026 года, 17:00 (начало церемонии), но для таймера ориентируемся на 23 мая 2026, 16:30 (сбор гостей)
-        const weddingDate = new Date(2026, 4, 23, 16, 30, 0); // 23 мая 2026, 16:30
+        // Элементы
+        const cover = document.getElementById('coverPage');
+        const main = document.getElementById('mainPage');
+        const seal = document.getElementById('sealButton');
+        
+        // Функция открытия "письма"
+        function openInvitation() {
+            if (!cover || !main) return;
+            // Скрываем cover-страницу с плавным исчезновением
+            cover.classList.add('hide');
+            // Показываем основную страницу с эффектом проявления
+            setTimeout(() => {
+                main.style.opacity = '1';
+                main.classList.add('visible');
+                // Небольшой скролл наверх, если нужно
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 180);
+        }
+        
+        // Клик по печати / по всей заставке (удобно: и на печать, и на фон)
+        if (seal) {
+            seal.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openInvitation();
+            });
+        }
+        // Чтобы открыть можно было кликнув в любом месте обложки (по желанию) — раскомментировать если нужно
+        if (cover) {
+            cover.addEventListener('click', (e) => {
+                // если клик именно по cover, но не по внутренней кнопке? чтобы дважды не сработало, проверим
+                // но для удобства клик по всему cover тоже открывает (кроме печати, там уже есть)
+                openInvitation();
+            });
+            // предотвращаем двойной вызов при клике на печать
+            seal.addEventListener('click', (e) => e.stopPropagation());
+        }
+        
+        // Таймер
+        const weddingDate = new Date(2026, 4, 23, 16, 30, 0);
         function updateTimer() {
             const now = new Date().getTime();
             const distance = weddingDate.getTime() - now;
-
             if (distance <= 0) {
-                // Если время уже прошло, показываем нули или "сейчас"
                 document.getElementById('days').innerText = '00';
                 document.getElementById('hours').innerText = '00';
                 document.getElementById('minutes').innerText = '00';
                 document.getElementById('seconds').innerText = '00';
                 return;
             }
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (86400000)) / (3600000));
+            const hours = Math.floor((distance % 86400000) / 3600000);
             const minutes = Math.floor((distance % 3600000) / 60000);
             const seconds = Math.floor((distance % 60000) / 1000);
-
             document.getElementById('days').innerText = days < 10 ? '0' + days : days;
             document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
             document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;

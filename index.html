@@ -187,18 +187,29 @@
         .delay-3 { animation-delay: 0.5s; }
         .delay-4 { animation-delay: 0.7s; }
 
+        .story-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c47a6b;
+            margin: 0.5rem 0 1rem;
+            text-align: center;
+        }
+
         .photos-row {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 1.8rem;
             flex-wrap: wrap;
-            margin: 1rem 0 1rem;
+            margin: 0.5rem 0 0.5rem;
         }
 
         .photo-item {
             flex: 0 0 auto;
             opacity: 0;
+            text-align: center;
         }
         .photo-item:first-child {
             transform: translateX(-20px);
@@ -231,8 +242,9 @@
             border: 1px solid #f0e0d6;
         }
 
+        /* левая фотка приподнята выше */
         .polaroid-left {
-            transform: rotate(-5deg) translateY(-5px);
+            transform: rotate(-5deg) translateY(-12px);
         }
         .polaroid-right {
             transform: rotate(6deg) translateY(8px);
@@ -252,6 +264,15 @@
             object-fit: cover;
             display: block;
             background-color: #f5e6de;
+        }
+
+        .polaroid-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            color: #8f7e6e;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         /* блок про детей */
@@ -276,9 +297,9 @@
             color: #4a3a2e;
         }
 
-        /* листайте вниз */
+        /* листайте вниз с ромбиками */
         .scroll-hint {
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
             font-size: 10px;
             letter-spacing: 2px;
             text-decoration: underline;
@@ -556,6 +577,7 @@
                                  alt="Шахзодбек"
                                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/f5e6de/c47a6b?text=Шахзодбек'">
                         </div>
+                        <div class="polaroid-caption">жених</div>
                     </div>
                 </div>
                 <div class="photo-item">
@@ -566,12 +588,14 @@
                                  alt="Зара"
                                  onerror="this.onerror=null; this.src='https://placehold.co/300x300/f5e6de/c47a6b?text=Зара'">
                         </div>
+                        <div class="polaroid-caption">невеста</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Только "Узнаёте этих детишек?" и "листайте вниз" -->
-            <div class="kids-message animate-item" style="animation-delay: 0.3s;">
+            <div class="story-tagline animate-item" style="animation-delay: 0.2s;">❝ две истории, одна любовь ❞</div>
+            
+            <div class="kids-message animate-item" style="animation-delay: 0.4s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
@@ -580,10 +604,9 @@
                 </div>
             </div>
             
-            <div class="scroll-hint animate-item" style="animation-delay: 0.6s;" id="scrollHint">листайте вниз</div>
+            <div class="scroll-hint animate-item" style="animation-delay: 0.6s;" id="scrollHint">✦ листайте вниз ✦</div>
         </div>
 
-        <!-- Дорогие гости! -->
         <div class="section fade-on-scroll">
             <div class="section-title">Дорогие гости!</div>
             <p class="text-center" style="font-size: 17px; line-height: 1.45; color: #4a3a2e;">Мы счастливы пригласить вас на самый важный день в нашей жизни — нашу свадьбу!<br><br>В этот день мы хотим быть в окружении самых близких и дорогих людей.</p>

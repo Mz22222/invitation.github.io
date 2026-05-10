@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Приглашение на свадьбу | Шахзод & Зара</title>
-    <meta name="description" content="Приглашение на свадьбу Шахзода и Зары. 23 мая 2026 года, Караван Сити.">
-    <!-- Fonts: Cormorant Garamond (элегантный стиль как в примере) -->
+    <title>Приглашение на свадьбу | Шахзодбек & Зара</title>
+    <meta name="description" content="Приглашение на свадьбу Шахзодбека и Зары. 23 мая 2026 года, Караван Сити.">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,30 +18,146 @@
             font-family: 'Cormorant Garamond', 'Cormorant', serif;
             color: #1e1e1e;
             line-height: 1.4;
+            overflow-x: hidden;
         }
 
-        .container {
+        /* ===== СТРАНИЦА-КОНВЕРТ (ЗАСТАВКА) ===== */
+        .cover-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f3ef;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cover-page.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .cover-inner {
+            text-align: center;
+            padding: 2rem;
+            animation: gentlePulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
+        .invitation-badge {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #b7aa9d;
+            margin-bottom: 1.5rem;
+        }
+
+        .names-cover {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: #2c2a29;
+            letter-spacing: -0.5px;
+        }
+
+        .seal {
+            margin: 2rem auto;
+            width: 80px;
+            height: 80px;
+            background: #ede3d9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .seal:hover {
+            transform: scale(1.05);
+            background: #e6d9ce;
+        }
+
+        .seal-icon {
+            font-size: 2.2rem;
+            color: #8b7a6b;
+        }
+
+        .click-hint {
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c7bcb0;
+            border-top: 1px solid #f0e8e0;
+            padding-top: 1.3rem;
+        }
+
+        /* ===== ОСНОВНАЯ СТРАНИЦА ===== */
+        .main-page {
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .main-page.visible {
+            opacity: 1;
+        }
+
+        .main-container {
             max-width: 620px;
             margin: 0 auto;
             background: #ffffff;
             box-shadow: 0 0 30px rgba(0,0,0,0.02);
-            min-height: 100vh;
         }
 
-        /* секции как в примере */
         .section {
             padding: 2rem 2rem;
         }
 
-        /* === ГЛАВНЫЙ ЭКРАН === */
+        /* === НЕОБЫЧНАЯ РАМКА НА ГЛАВНОЙ СТРАНИЦЕ (ромбовидная/повернутая) === */
         .hero-frame {
             background: #ffffff;
-            padding: 2rem 1.5rem 2rem;
+            padding: 2.2rem 1.5rem 2rem;
             text-align: center;
             position: relative;
-            border: 1px solid #d4c5b2;
             margin: 2rem 1.5rem 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            /* необычная рамка: два слоя + поворот */
+            border: 1px solid #d4c5b2;
+            transform: rotate(0.5deg);
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+
+        .hero-frame::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 1px solid #c7b59e;
+            pointer-events: none;
+        }
+
+        .hero-frame:hover {
+            transform: rotate(0deg);
         }
 
         /* анимация для элементов */
@@ -61,8 +176,8 @@
         .delay-2 { animation-delay: 0.3s; }
         .delay-3 { animation-delay: 0.5s; }
         .delay-4 { animation-delay: 0.7s; }
+        .delay-5 { animation-delay: 0.9s; }
 
-        /* заголовок "две истории, одна любовь" */
         .story-tagline {
             font-family: 'Cormorant Garamond', serif;
             font-size: 14px;
@@ -115,7 +230,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* наклоны */
         .polaroid-left {
             transform: rotate(-5deg) translateY(-5px);
         }
@@ -147,7 +261,7 @@
             text-align: center;
         }
         .hero-names {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: 500;
             font-family: 'Cormorant Garamond', serif;
             line-height: 1.2;
@@ -159,24 +273,17 @@
             color: #c2b4a6;
         }
 
-        /* дата */
+        /* дата текстом, без полоски */
         .hero-date {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 400;
-            letter-spacing: 2px;
-            margin: 0.5rem 0 0.2rem;
+            letter-spacing: 1.5px;
+            margin: 0.5rem 0 0;
             color: #5f4c38;
         }
 
-        .divider-line {
-            width: 50px;
-            height: 1px;
-            background: #c7b59e;
-            margin: 0.8rem auto;
-        }
-
         .scroll-hint {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             font-size: 10px;
             letter-spacing: 2px;
             text-decoration: underline;
@@ -184,7 +291,7 @@
             color: #8f7a64;
         }
 
-        /* остальные секции из примера */
+        /* остальные секции */
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
@@ -198,6 +305,13 @@
 
         .text-center {
             text-align: center;
+        }
+
+        .divider-line {
+            width: 50px;
+            height: 1px;
+            background: #c7b59e;
+            margin: 0.8rem auto;
         }
 
         /* календарь */
@@ -390,7 +504,7 @@
                 padding: 1.5rem 1.2rem;
             }
             .hero-names {
-                font-size: 34px;
+                font-size: 32px;
             }
             .hero-frame {
                 margin: 1.5rem 1rem;
@@ -402,148 +516,160 @@
             .photos-row {
                 gap: 1rem;
             }
-            .timeline-desc {
-                max-width: 60%;
-            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- ГЛАВНЫЙ ЭКРАН с новым расположением -->
-    <div class="hero-frame">
-        <!-- текст "две истории, одна любовь" -->
-        <div class="story-tagline animate-item">❝ две истории, одна любовь ❞</div>
-        
-        <!-- фотографии РЯДОМ с наклонами -->
-        <div class="photos-row">
-            <div class="photo-item" style="animation-delay: 0.2s;">
-                <div class="polaroid-frame polaroid-left">
-                    <div class="polaroid-inner">
-                        <img class="polaroid-img" 
-                             src="shah.jpg" 
-                             alt="Шахзод"
-                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Шахзод'">
+
+<!-- СТРАНИЦА-КОНВЕРТ -->
+<div id="coverPage" class="cover-page">
+    <div class="cover-inner">
+        <div class="invitation-badge">✨ СЕМЕЙНОЕ ТОРЖЕСТВО ✨</div>
+        <div class="names-cover">
+            Шахзодбек <span style="font-weight: 300;">&</span> Зара
+        </div>
+        <div class="accent-line" style="margin: 1.3rem auto; width: 45px; height: 1px; background: #c0b7ae;"></div>
+        <div id="sealButton" class="seal">
+            <span class="seal-icon">📜</span>
+        </div>
+        <div class="click-hint">
+            НАЖМИТЕ НА ПЕЧАТЬ
+        </div>
+    </div>
+</div>
+
+<!-- ОСНОВНАЯ СТРАНИЦА -->
+<div id="mainPage" class="main-page">
+    <div class="main-container">
+        <div class="hero-frame">
+            <div class="story-tagline animate-item">❝ две истории, одна любовь ❞</div>
+            
+            <div class="photos-row">
+                <div class="photo-item" style="animation-delay: 0.2s;">
+                    <div class="polaroid-frame polaroid-left">
+                        <div class="polaroid-inner">
+                            <img class="polaroid-img" 
+                                 src="shah.jpg" 
+                                 alt="Шахзодбек"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Шахзодбек'">
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="animation-delay: 0.5s;">
+                    <div class="polaroid-frame polaroid-right">
+                        <div class="polaroid-inner">
+                            <img class="polaroid-img" 
+                                 src="zara.jpg" 
+                                 alt="Зара"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Зара'">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 0.5s;">
-                <div class="polaroid-frame polaroid-right">
-                    <div class="polaroid-inner">
-                        <img class="polaroid-img" 
-                             src="zara.jpg" 
-                             alt="Зара"
-                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/f2ede7/c0a080?text=Зара'">
-                    </div>
+            
+            <div class="names-row animate-item" style="animation-delay: 0.7s;">
+                <div class="hero-names">Шахзодбек <span>&</span> Зара</div>
+            </div>
+            
+            <div class="hero-date animate-item" style="animation-delay: 0.9s;">23 мая 2026</div>
+            
+            <div class="scroll-hint animate-item" style="animation-delay: 1.1s;" id="scrollHint">✦ листайте вниз ✦</div>
+        </div>
+
+        <!-- Дорогие гости! -->
+        <div class="section fade-on-scroll">
+            <div class="section-title">Дорогие гости!</div>
+            <p class="text-center" style="font-size: 17px; line-height: 1.45;">Мы счастливы пригласить вас на самый важный день в нашей жизни — нашу свадьбу!<br><br>В этот день мы хотим быть в окружении самых близких и дорогих людей.</p>
+            <div class="divider-line" style="margin: 1.2rem auto;"></div>
+            <p class="text-center" style="font-size: 16px;">Надеемся, что вы примете наше приглашение, будем вас ждать!</p>
+        </div>
+
+        <!-- КАЛЕНДАРЬ -->
+        <div class="section fade-on-scroll">
+            <div class="section-title">Дата нашей свадьбы</div>
+            <div class="calendar-wrap">
+                <div class="calendar-month">МАЙ 2026</div>
+                <div class="calendar-weekdays">
+                    <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
                 </div>
+                <div class="calendar-days" id="dynamicCalendar"></div>
+                <div class="calendar-caption">23 мая — наш особенный день</div>
             </div>
         </div>
-        
-        <!-- имена в ряд -->
-        <div class="names-row animate-item" style="animation-delay: 0.7s;">
-            <div class="hero-names">Шахзод <span>&</span> Зара</div>
+
+        <!-- ЛОКАЦИЯ -->
+        <div class="section location-block fade-on-scroll">
+            <div class="section-title">Локация</div>
+            <p style="font-size: 16px;">Ждем вас по адресу:</p>
+            <div class="resto-name">Караван Сити</div>
+            <div class="address-detail">Москва</div>
+            <div class="divider-line" style="margin: 1.2rem auto;"></div>
+            <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p>
+            <a href="https://yandex.ru/maps/?text=Караван%20Сити%20Москва&ll=37.6175,55.7519&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
+                📍 Проложить маршрут
+            </a>
         </div>
-        
-        <!-- дата -->
-        <div class="hero-date animate-item" style="animation-delay: 0.9s;">23.05.26</div>
-        
-        <div class="divider-line"></div>
-        <div class="scroll-hint animate-item" style="animation-delay: 1.1s;" id="scrollHint">✦ листайте вниз ✦</div>
-    </div>
 
-    <!-- Дорогие гости! текст -->
-    <div class="section fade-on-scroll">
-        <div class="section-title">Дорогие гости!</div>
-        <p class="text-center" style="font-size: 17px; line-height: 1.45;">Мы счастливы пригласить вас на самый важный день в нашей жизни — нашу свадьбу!<br><br>В этот день мы хотим быть в окружении самых близких и дорогих людей.</p>
-        <div class="divider-line" style="margin: 1.2rem auto; background: #c7b59e;"></div>
-        <p class="text-center" style="font-size: 16px;">Надеемся, что вы примете наше приглашение, будем вас ждать!</p>
-    </div>
-
-    <!-- КАЛЕНДАРЬ -->
-    <div class="section fade-on-scroll">
-        <div class="section-title">Дата нашей свадьбы</div>
-        <div class="calendar-wrap">
-            <div class="calendar-month">МАЙ 2026</div>
-            <div class="calendar-weekdays">
-                <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+        <!-- ПРОГРАММА ДНЯ -->
+        <div class="section fade-on-scroll">
+            <div class="section-title">План дня</div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:30</div>
+                <div class="timeline-desc">Сбор гостей <small>Встречаемся, обмениваемся улыбками</small></div>
             </div>
-            <div class="calendar-days" id="dynamicCalendar"></div>
-            <div class="calendar-caption">23 мая — наш особенный день</div>
-        </div>
-    </div>
-
-    <!-- ЛОКАЦИЯ -->
-    <div class="section location-block fade-on-scroll">
-        <div class="section-title">Локация</div>
-        <p style="font-size: 16px;">Ждем вас по адресу:</p>
-        <div class="resto-name">Караван Сити</div>
-        <div class="address-detail">Москва</div>
-        <div class="divider-line" style="margin: 1.2rem auto;"></div>
-        <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p>
-        <a href="https://yandex.ru/maps/?text=Караван%20Сити%20Москва&ll=37.6175,55.7519&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
-            📍 Проложить маршрут
-        </a>
-    </div>
-
-    <!-- ПРОГРАММА ДНЯ -->
-    <div class="section fade-on-scroll">
-        <div class="section-title">План дня</div>
-        <div class="timeline-item">
-            <div class="timeline-time">16:30</div>
-            <div class="timeline-desc">Сбор гостей <small>Встречаемся, обмениваемся улыбками</small></div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-time">17:00</div>
-            <div class="timeline-desc">Торжественная церемония <small>Самый трогательный момент</small></div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-time">18:00</div>
-            <div class="timeline-desc">Свадебный ужин <small>Вкусные блюда и веселая программа</small></div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-time">22:00</div>
-            <div class="timeline-desc">Завершение вечера <small>Оставляем только приятные воспоминания</small></div>
-        </div>
-    </div>
-
-    <!-- ДРЕСС-КОД -->
-    <div class="section fade-on-scroll">
-        <div class="section-title">Дресс-код</div>
-        <div class="dresscode-textblock">
-            <p>Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
-            <p>Поддержите нас вашими улыбками и красивыми нарядами, в которых вам будет комфортно.</p>
-            <p class="white-dress-note">Девушки, мы будем рады видеть вас в светлых, нежных тонах. 🤍</p>
-        </div>
-    </div>
-
-    <!-- ТАЙМЕР -->
-    <div class="section fade-on-scroll">
-        <div class="section-title">Мы станем семьей через...</div>
-        <div class="timer-box">
-            <div class="timer-digits" id="timerDisplay">
-                <span class="timer-unit">0 дней</span>
-                <span class="timer-unit">0 часов</span>
-                <span class="timer-unit">0 минут</span>
+            <div class="timeline-item">
+                <div class="timeline-time">17:00</div>
+                <div class="timeline-desc">Торжественная церемония <small>Самый трогательный момент</small></div>
             </div>
-            <div style="margin-top: 0.8rem;">💒 ДО ВСТРЕЧИ! 💒</div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00</div>
+                <div class="timeline-desc">Свадебный ужин <small>Вкусные блюда и веселая программа</small></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">22:00</div>
+                <div class="timeline-desc">Завершение вечера <small>Оставляем только приятные воспоминания</small></div>
+            </div>
         </div>
-    </div>
 
-    <!-- ФУТЕР -->
-    <div class="footer fade-on-scroll">
-        Шахзод & Зара<br>
-        23 мая 2026
+        <!-- ДРЕСС-КОД -->
+        <div class="section fade-on-scroll">
+            <div class="section-title">Дресс-код</div>
+            <div class="dresscode-textblock">
+                <p>Мы очень ждём и с удовольствием готовимся к нашему незабываемому дню!</p>
+                <p>Поддержите нас вашими улыбками и красивыми нарядами, в которых вам будет комфортно.</p>
+                <p class="white-dress-note">Девушки, мы будем рады видеть вас в светлых, нежных тонах. 🤍</p>
+            </div>
+        </div>
+
+        <!-- ТАЙМЕР -->
+        <div class="section fade-on-scroll">
+            <div class="section-title">Мы станем семьей через...</div>
+            <div class="timer-box">
+                <div class="timer-digits" id="timerDisplay">
+                    <span class="timer-unit">0 дней</span>
+                    <span class="timer-unit">0 часов</span>
+                    <span class="timer-unit">0 минут</span>
+                </div>
+                <div style="margin-top: 0.8rem;">💒 ДО ВСТРЕЧИ! 💒</div>
+            </div>
+        </div>
+
+        <!-- ФУТЕР -->
+        <div class="footer fade-on-scroll">
+            Шахзодбек & Зара<br>
+            23 мая 2026
+        </div>
     </div>
 </div>
 
 <script>
-    // ---- КАЛЕНДАРЬ для МАЯ 2026 с выделением 23 числа ----
+    // ---- КАЛЕНДАРЬ для МАЯ 2026 ----
     function buildMay2026Calendar() {
         const container = document.getElementById('dynamicCalendar');
         if (!container) return;
         
         const year = 2026;
-        const month = 4; // май (0-индекс: 4 = май)
+        const month = 4;
         const highlightDay = 23;
         
         const firstDayOfMonth = new Date(year, month, 1);
@@ -581,7 +707,7 @@
     
     buildMay2026Calendar();
     
-    // ТАЙМЕР до 23 мая 2026, 16:30
+    // ТАЙМЕР
     function updateWeddingTimer() {
         const weddingDate = new Date(2026, 4, 23, 16, 30, 0);
         const now = new Date();
@@ -614,7 +740,33 @@
     updateWeddingTimer();
     setInterval(updateWeddingTimer, 60000);
 
-    // плавный скролл
+    // открытие конверта
+    const cover = document.getElementById('coverPage');
+    const main = document.getElementById('mainPage');
+    const seal = document.getElementById('sealButton');
+    
+    function openInvitation() {
+        if (!cover || !main) return;
+        cover.classList.add('hide');
+        setTimeout(() => {
+            main.style.opacity = '1';
+            main.classList.add('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 180);
+    }
+    
+    if (seal) {
+        seal.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openInvitation();
+        });
+    }
+    if (cover) {
+        cover.addEventListener('click', openInvitation);
+        if (seal) seal.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // скролл
     const scrollHint = document.getElementById('scrollHint');
     if (scrollHint) {
         scrollHint.addEventListener('click', () => {
@@ -622,7 +774,7 @@
         });
     }
 
-    // АНИМАЦИЯ ПРИ СКРОЛЛЕ
+    // анимация при скролле
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -636,18 +788,6 @@
     fadeElements.forEach(el => {
         observer.observe(el);
     });
-    
-    function checkVisibilityFallback() {
-        fadeElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            if (rect.top < windowHeight - 80 && rect.bottom > 0) {
-                el.classList.add('visible');
-            }
-        });
-    }
-    window.addEventListener('load', checkVisibilityFallback);
-    window.addEventListener('scroll', checkVisibilityFallback);
 </script>
 </body>
 </html>

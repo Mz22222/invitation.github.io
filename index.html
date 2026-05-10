@@ -246,9 +246,9 @@
         .polaroid-left {
             transform: rotate(-5deg) translateY(-20px);
         }
-        /* правая фотка — сильно опущена (верх на уровне середины левой) */
+        /* правая фотка — очень низко */
         .polaroid-right {
-            transform: rotate(6deg) translateY(45px);
+            transform: rotate(6deg) translateY(70px);
         }
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
@@ -276,10 +276,10 @@
             font-weight: 500;
         }
 
-        /* блок про детей */
+        /* блок про детей — спущен ниже */
         .kids-message {
             text-align: center;
-            margin: 2.2rem 0 1rem;
+            margin: 3.5rem 0 1rem;
         }
 
         .kids-title {
@@ -300,7 +300,7 @@
 
         /* листайте вниз с ромбиками */
         .scroll-hint {
-            margin-top: 1.8rem;
+            margin-top: 2rem;
             font-size: 10px;
             letter-spacing: 2px;
             text-decoration: underline;
@@ -531,12 +531,14 @@
             .photos-row {
                 gap: 1.2rem;
             }
-            /* на мобильных уменьшаем сдвиг, но сохраняем эффект */
             .polaroid-left {
                 transform: rotate(-4deg) translateY(-12px);
             }
             .polaroid-right {
-                transform: rotate(5deg) translateY(28px);
+                transform: rotate(5deg) translateY(45px);
+            }
+            .kids-message {
+                margin: 2.2rem 0 0.8rem;
             }
             .timeline-desc {
                 max-width: 60%;
@@ -552,9 +554,6 @@
             }
             .story-tagline {
                 margin-bottom: 1.8rem;
-            }
-            .kids-message {
-                margin: 1.5rem 0 0.8rem;
             }
         }
     </style>
@@ -585,7 +584,7 @@
             <!-- текст "две истории, одна любовь" -->
             <div class="story-tagline animate-item" style="animation-delay: 0.1s;">❝ две истории, одна любовь ❞</div>
             
-            <!-- фотографии с сильным перепадом по высоте -->
+            <!-- фотографии с очень низкой правой рамкой -->
             <div class="photos-row">
                 <div class="photo-item">
                     <div class="polaroid-frame polaroid-left">
@@ -611,7 +610,7 @@
                 </div>
             </div>
             
-            <!-- текст про детей -->
+            <!-- текст про детей — спущен значительно ниже -->
             <div class="kids-message animate-item" style="animation-delay: 0.5s;">
                 <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">

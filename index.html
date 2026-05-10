@@ -44,7 +44,7 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding-bottom: 2rem;
+            padding-bottom: 3rem;
             transition: all 0.6s ease;
         }
 
@@ -56,7 +56,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding-top: 2rem;
+            padding-top: 3rem;
             transition: all 0.6s ease;
             border-top: 1px solid rgba(74, 111, 165, 0.2);
         }
@@ -64,83 +64,83 @@
         /* Текст на верхней части */
         .cover-top-text {
             color: #f5f7fc;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
+            font-size: 0.85rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 300;
         }
 
-        /* Кликабельная печать по центру (на границе) */
+        /* Кликабельная кнопка по центру */
         .cover-seal {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90px;
-            height: 90px;
             background: #e8edf5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0.8rem 1.8rem;
             cursor: pointer;
             z-index: 2100;
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             border: 2px solid #ffffff;
+            border-radius: 40px;
+            letter-spacing: 3px;
         }
 
         .cover-seal:hover {
-            transform: translate(-50%, -50%) scale(1.08);
+            transform: translate(-50%, -50%) scale(1.05);
             background: #ffffff;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .seal-text {
-            font-size: 2.2rem;
+            font-size: 0.9rem;
             color: #1a1a2e;
             font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
-        /* Имена и дата в нижней части */
+        /* Имена и дата в нижней части — крупнее */
         .cover-names {
             text-align: center;
             margin-top: 1rem;
         }
         .cover-names-top {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 3.2rem;
             font-weight: 500;
             color: #1a1a2e;
             letter-spacing: -0.5px;
         }
         .cover-names-bottom {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 3.2rem;
             font-weight: 500;
             color: #1a1a2e;
             letter-spacing: -0.5px;
         }
         .cover-ampersand {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 300;
             color: #4a6fa5;
             margin: 0.2rem 0;
         }
         .cover-date {
-            font-size: 1.1rem;
-            letter-spacing: 2px;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
             color: #4a6fa5;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             font-weight: 400;
         }
 
+        /* Черточка длиннее */
         .divider-line-small {
-            width: 40px;
+            width: 70px;
             height: 1px;
             background: #4a6fa5;
-            margin: 0.8rem auto;
+            margin: 1rem auto;
         }
 
         /* Анимация при закрытии */
@@ -609,17 +609,22 @@
                 margin-bottom: 1.8rem;
             }
             .cover-names-top, .cover-names-bottom {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             .cover-ampersand {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
+            }
+            .cover-date {
+                font-size: 1rem;
+            }
+            .divider-line-small {
+                width: 50px;
             }
             .cover-seal {
-                width: 70px;
-                height: 70px;
+                padding: 0.5rem 1.2rem;
             }
             .seal-text {
-                font-size: 1.8rem;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -641,7 +646,7 @@
         </div>
     </div>
     <div id="coverSeal" class="cover-seal">
-        <span class="seal-text">📜</span>
+        <span class="seal-text">НАЖМИТЕ</span>
     </div>
 </div>
 

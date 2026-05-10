@@ -14,7 +14,7 @@
         }
 
         body {
-            background: #fef7f2;
+            background: #fefcf9;
             font-family: 'Cormorant Garamond', 'Cormorant', serif;
             color: #2c2418;
             line-height: 1.4;
@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #fef7f2;
+            background: #fefcf9;
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -113,7 +113,7 @@
         .main-page {
             opacity: 0;
             transition: opacity 1s ease;
-            background: #fef7f2;
+            background: #fefcf9;
             min-height: 100vh;
         }
 
@@ -186,17 +186,6 @@
         .delay-2 { animation-delay: 0.3s; }
         .delay-3 { animation-delay: 0.5s; }
         .delay-4 { animation-delay: 0.7s; }
-        .delay-5 { animation-delay: 0.9s; }
-
-        .story-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 14px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #c47a6b;
-            margin-bottom: 1.8rem;
-            text-align: center;
-        }
 
         .photos-row {
             display: flex;
@@ -265,31 +254,29 @@
             background-color: #f5e6de;
         }
 
-        .names-row {
-            margin: 1.5rem 0 0.5rem;
+        /* блок про детей */
+        .kids-message {
             text-align: center;
+            margin: 1rem 0 1.5rem;
         }
-        .hero-names {
-            font-size: 42px;
-            font-weight: 600;
+
+        .kids-title {
             font-family: 'Cormorant Garamond', serif;
-            line-height: 1.2;
-            color: #c25b3a;
-            letter-spacing: 1px;
-        }
-        .hero-names span {
-            font-weight: 300;
-            color: #e8a78e;
-        }
-
-        .hero-date {
-            font-size: 20px;
             font-weight: 500;
-            letter-spacing: 1.5px;
-            margin: 0.5rem 0 0;
-            color: #b84c2e;
+            font-size: 22px;
+            letter-spacing: 0.02em;
+            color: #c25b3a;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
+        .kids-text {
+            font-size: 17px;
+            line-height: 1.5;
+            color: #4a3a2e;
+        }
+
+        /* листайте вниз */
         .scroll-hint {
             margin-top: 1.5rem;
             font-size: 10px;
@@ -297,6 +284,7 @@
             text-decoration: underline;
             cursor: pointer;
             color: #c47a6b;
+            display: inline-block;
         }
 
         .section-title {
@@ -320,30 +308,6 @@
             background: linear-gradient(90deg, #e8a78e, #c47a6b, #e8a78e);
             margin: 1rem auto;
             border-radius: 2px;
-        }
-
-        .kids-message {
-            background: #fffaf5;
-            padding: 2rem 1.5rem;
-            margin: 0 0 1rem 0;
-            border-radius: 24px;
-            text-align: center;
-        }
-
-        .kids-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: 22px;
-            letter-spacing: 0.02em;
-            color: #c25b3a;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .kids-text {
-            font-size: 17px;
-            line-height: 1.5;
-            color: #4a3a2e;
         }
 
         .calendar-wrap {
@@ -520,12 +484,6 @@
             color: #c47a6b;
             line-height: 1.6;
         }
-        .heart {
-            font-size: 1.2rem;
-            display: inline-block;
-            margin: 0 4px;
-            color: #c25b3a;
-        }
 
         .fade-on-scroll {
             opacity: 0;
@@ -540,9 +498,6 @@
         @media (max-width: 550px) {
             .section {
                 padding: 1.5rem 1.2rem;
-            }
-            .hero-names {
-                font-size: 34px;
             }
             .hero-section {
                 margin: 0.5rem 1rem;
@@ -592,8 +547,6 @@
 <div id="mainPage" class="main-page">
     <div class="main-container">
         <div class="hero-section">
-            <div class="story-tagline animate-item">❝ две истории, одна любовь ❞</div>
-            
             <div class="photos-row">
                 <div class="photo-item">
                     <div class="polaroid-frame polaroid-left">
@@ -617,26 +570,20 @@
                 </div>
             </div>
             
-            <div class="names-row animate-item" style="animation-delay: 0.6s;">
-                <div class="hero-names">Шахзодбек <span>&</span> Зара</div>
-            </div>
-            
-            <div class="hero-date animate-item" style="animation-delay: 0.8s;">23 мая 2026</div>
-            
-            <div class="scroll-hint animate-item" style="animation-delay: 1s;" id="scrollHint">✦ листайте вниз ✦</div>
-        </div>
-
-        <div class="section fade-on-scroll">
-            <div class="kids-message">
-                <div class="kids-title">✨ Узнаёте этих детишек? ✨</div>
+            <!-- Только "Узнаёте этих детишек?" и "листайте вниз" -->
+            <div class="kids-message animate-item" style="animation-delay: 0.3s;">
+                <div class="kids-title">Узнаёте этих детишек?</div>
                 <div class="kids-text">
                     Да-да, это мы!<br>
                     Время пролетело незаметно, мы повзрослели<br>
                     и приняли решение пожениться!
                 </div>
             </div>
+            
+            <div class="scroll-hint animate-item" style="animation-delay: 0.6s;" id="scrollHint">листайте вниз</div>
         </div>
 
+        <!-- Дорогие гости! -->
         <div class="section fade-on-scroll">
             <div class="section-title">Дорогие гости!</div>
             <p class="text-center" style="font-size: 17px; line-height: 1.45; color: #4a3a2e;">Мы счастливы пригласить вас на самый важный день в нашей жизни — нашу свадьбу!<br><br>В этот день мы хотим быть в окружении самых близких и дорогих людей.</p>
@@ -658,13 +605,11 @@
 
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
-            <p style="font-size: 16px; color: #6b4c3a;">Ждем вас по адресу:</p>
             <div class="resto-name">Караван Сити</div>
             <div class="address-detail">Олимпийский просп., вл39с1, Мытищи</div>
             <div class="divider-line" style="margin: 1.2rem auto;"></div>
-            <p style="margin-top: 0.7rem; font-size: 15px;"><span class="heart">❤</span> Сбор гостей в <strong>16:30</strong> <span class="heart">❤</span></p>
             <a href="https://yandex.ru/maps/?text=Олимпийский+просп.+вл39с1+Мытищи&ll=37.731,55.911&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
-                📍 Проложить маршрут
+                Посмотреть на карте
             </a>
         </div>
 
@@ -721,7 +666,7 @@
     <span class="music-icon">🎵</span>
 </div>
 
-<!-- АУДИО - ЛОКАЛЬНЫЙ ФАЙЛ (положите music.mp3 в ту же папку, что и index.html) -->
+<!-- АУДИО - ЛОКАЛЬНЫЙ ФАЙЛ -->
 <audio id="weddingAudio" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -804,7 +749,7 @@
     updateWeddingTimer();
     setInterval(updateWeddingTimer, 60000);
 
-    // МУЗЫКА - локальный файл
+    // МУЗЫКА
     const audio = document.getElementById('weddingAudio');
     const musicControl = document.getElementById('musicControl');
     let isMusicPlaying = false;
@@ -812,13 +757,10 @@
     
     function startMusic() {
         if (!mainPageOpened) return;
-        
         audio.play().then(() => {
             isMusicPlaying = true;
             musicControl.classList.remove('muted');
-            console.log('Музыка играет');
         }).catch((err) => {
-            console.log('Автовоспроизведение заблокировано браузером. Нажмите на кнопку музыки.', err);
             isMusicPlaying = false;
             musicControl.classList.add('muted');
         });
@@ -833,9 +775,7 @@
             audio.play().then(() => {
                 isMusicPlaying = true;
                 musicControl.classList.remove('muted');
-            }).catch((err) => {
-                console.log('Не удалось воспроизвести. Проверьте, есть ли файл music.mp3 в папке с сайтом');
-            });
+            }).catch((err) => {});
         }
     }
     

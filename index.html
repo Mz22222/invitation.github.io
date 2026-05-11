@@ -292,7 +292,7 @@
             font-weight: 500;
         }
 
-        /* блок про детей — отступ увеличен, чтобы не налегал на рамку */
+        /* блок про детей */
         .kids-message {
             text-align: center;
             margin: 6rem 0 1rem;
@@ -420,7 +420,7 @@
             color: #4a6fa5;
         }
 
-        /* ЛОКАЦИЯ — обновлена */
+        /* ЛОКАЦИЯ */
         .location-block {
             text-align: center;
         }
@@ -529,6 +529,43 @@
             text-align: center;
         }
 
+        /* Дополнительная фотография в стиле поляроид */
+        .extra-photo-section {
+            text-align: center;
+            margin: 2rem 0 1rem;
+        }
+        .extra-polaroid {
+            background: #ffffff;
+            padding: 8px 8px 12px 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            max-width: 200px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid #d0d8e8;
+            transition: transform 0.3s ease;
+        }
+        .extra-polaroid:hover {
+            transform: scale(1.02);
+        }
+        .extra-polaroid-inner {
+            background: #fff;
+        }
+        .extra-polaroid-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            background-color: #e8edf5;
+        }
+        .extra-polaroid-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: #4a6fa5;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
         .footer {
             text-align: center;
             padding: 2rem;
@@ -608,6 +645,9 @@
             }
             .seal-text {
                 font-size: 0.7rem;
+            }
+            .extra-polaroid {
+                max-width: 160px;
             }
         }
     </style>
@@ -696,7 +736,6 @@
             </div>
         </div>
 
-        <!-- ЛОКАЦИЯ — ОБНОВЛЕНА -->
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
             <div class="location-label">Ждем вас по адресу</div>
@@ -744,6 +783,19 @@
                     <span>минут</span>
                     <span>секунд</span>
                 </div>
+            </div>
+        </div>
+
+        <!-- НОВАЯ ФОТОГРАФИЯ В СТИЛЕ ПОЛЯРОИД -->
+        <div class="section extra-photo-section fade-on-scroll">
+            <div class="extra-polaroid">
+                <div class="extra-polaroid-inner">
+                    <img class="extra-polaroid-img" 
+                         src="flowers.jpg" 
+                         alt="Цветы"
+                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/e8edf5/4a6fa5?text=flowers'">
+                </div>
+                <div class="extra-polaroid-caption">Ждём вас!</div>
             </div>
         </div>
 

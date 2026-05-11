@@ -214,7 +214,6 @@
             margin: 1rem 1.5rem;
         }
 
-        /* Анимации */
         .animate-item {
             opacity: 0;
             transform: translateY(30px);
@@ -226,46 +225,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* Падение фото сверху */
-        @keyframes dropPhotoLeft {
-            0% {
-                opacity: 0;
-                transform: rotate(-15deg) translateY(-300px);
-            }
-            70% {
-                opacity: 0.9;
-                transform: rotate(-2deg) translateY(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(-4deg) translateY(-20px);
-            }
-        }
-        @keyframes dropPhotoRight {
-            0% {
-                opacity: 0;
-                transform: rotate(15deg) translateY(-300px);
-            }
-            70% {
-                opacity: 0.9;
-                transform: rotate(2deg) translateY(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(5deg) translateY(95px);
-            }
-        }
-
-        .photo-item-fall {
-            animation: dropPhotoLeft 0.8s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
-        }
-        .photo-item-fall:last-child {
-            animation: dropPhotoRight 0.8s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
-        }
-
-        .delay-fall-1 { animation-delay: 0.1s; }
-        .delay-fall-2 { animation-delay: 0.3s; }
 
         .story-tagline {
             font-family: 'Cormorant Garamond', serif;
@@ -289,7 +248,6 @@
         .photo-item {
             flex: 0 0 auto;
             text-align: center;
-            opacity: 0;
         }
 
         .polaroid-frame {
@@ -532,14 +490,8 @@
             line-height: 1.5;
             color: #4a4a6a;
         }
-        .white-dress-note {
-            margin-top: 0.5rem;
-            font-style: italic;
-            color: #4a6fa5;
-            font-weight: 500;
-        }
 
-        /* Новый таймер в одну строку через : */
+        /* Таймер */
         .timer-box {
             background: #ffffff;
             padding: 1.5rem;
@@ -555,12 +507,19 @@
             letter-spacing: 4px;
             color: #1a1a2e;
         }
-        .timer-label {
+        .timer-labels {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
             margin-top: 0.5rem;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
             color: #4a6fa5;
             text-transform: uppercase;
+        }
+        .timer-labels span {
+            min-width: 60px;
+            text-align: center;
         }
 
         .footer {
@@ -599,6 +558,13 @@
             .timer-digits {
                 font-size: 1.4rem;
                 letter-spacing: 2px;
+            }
+            .timer-labels {
+                gap: 0.5rem;
+            }
+            .timer-labels span {
+                min-width: 40px;
+                font-size: 0.55rem;
             }
             .kids-message {
                 margin: 3.5rem 0 0.8rem;
@@ -667,7 +633,7 @@
             <div class="story-tagline animate-item" style="animation-delay: 0.2s;">❝ две истории, одна любовь ❞</div>
             
             <div class="photos-row">
-                <div class="photo-item photo-item-fall delay-fall-1">
+                <div class="photo-item">
                     <div class="polaroid-frame polaroid-left">
                         <div class="polaroid-inner">
                             <img class="polaroid-img" 
@@ -678,7 +644,7 @@
                         <div class="polaroid-caption">жених</div>
                     </div>
                 </div>
-                <div class="photo-item photo-item-fall delay-fall-2">
+                <div class="photo-item">
                     <div class="polaroid-frame polaroid-right">
                         <div class="polaroid-inner">
                             <img class="polaroid-img" 
@@ -723,7 +689,6 @@
             </div>
         </div>
 
-        <!-- ЛОКАЦИЯ ИСПРАВЛЕНА -->
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
             <div class="resto-name">Караван Сити</div>
@@ -754,7 +719,6 @@
             </div>
         </div>
 
-        <!-- ОБНОВЛЁННЫЙ ДРЕСС-КОД -->
         <div class="section fade-on-scroll">
             <div class="section-title">Дресс-код</div>
             <div class="dresscode-textblock">
@@ -762,12 +726,16 @@
             </div>
         </div>
 
-        <!-- НОВЫЙ ТАЙМЕР -->
         <div class="section fade-on-scroll">
             <div class="section-title">До нашей встречи</div>
             <div class="timer-box">
                 <div class="timer-digits" id="timerDisplay">00:00:00:00</div>
-                <div class="timer-label">ДНИ : ЧАСЫ : МИНУТЫ : СЕКУНДЫ</div>
+                <div class="timer-labels">
+                    <span>дней</span>
+                    <span>часов</span>
+                    <span>минут</span>
+                    <span>секунд</span>
+                </div>
             </div>
         </div>
 
@@ -833,7 +801,7 @@
     
     buildMay2026Calendar();
     
-    // НОВЫЙ ТАЙМЕР В ФОРМАТЕ ДНИ:ЧАСЫ:МИНУТЫ:СЕКУНДЫ
+    // ТАЙМЕР
     function updateWeddingTimer() {
         const weddingDate = new Date(2026, 4, 23, 16, 30, 0);
         const now = new Date();

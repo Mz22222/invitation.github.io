@@ -288,7 +288,6 @@
             font-weight: 500;
         }
 
-        /* Текст "Узнаёте этих детишек?" поднят */
         .kids-message {
             text-align: center;
             margin: 5rem 0 1rem;
@@ -455,31 +454,45 @@
             color: white;
         }
 
-        .timeline-item {
+        /* ===== ПЛАН ДНЯ В НОВОМ СТИЛЕ (как на скриншоте) ===== */
+        .timeline-section {
+            margin: 1rem 0;
+        }
+        .timeline-item-new {
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            border-bottom: 1px solid #d0d8e8;
-            padding: 1rem 0;
-            flex-wrap: wrap;
+            padding: 1.2rem 0;
+            position: relative;
         }
-        .timeline-time {
-            font-weight: 600;
-            font-size: 20px;
+        .timeline-item-new:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #d0d8e8 0%, #d0d8e8 30%, transparent 100%);
+        }
+        .timeline-time-new {
             font-family: 'Cormorant Garamond', serif;
-            min-width: 100px;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: #1a1a2e;
+            min-width: 95px;
         }
-        .timeline-desc {
-            font-size: 16px;
-            text-align: right;
-            max-width: 65%;
+        .timeline-desc-new {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
             color: #4a4a6a;
+            text-align: right;
+            font-weight: 400;
         }
-        .timeline-desc small {
-            font-size: 13px;
+        .timeline-desc-new small {
+            font-size: 0.75rem;
             color: #4a6fa5;
             display: block;
+            margin-top: 3px;
         }
 
         .dresscode-textblock {
@@ -615,8 +628,12 @@
                 min-width: 45px;
                 font-size: 0.55rem;
             }
-            .timeline-desc {
-                max-width: 60%;
+            .timeline-time-new {
+                font-size: 1.2rem;
+                min-width: 75px;
+            }
+            .timeline-desc-new {
+                font-size: 0.85rem;
             }
             .music-control {
                 bottom: 15px;
@@ -719,7 +736,6 @@
             <div class="scroll-hint" id="scrollHint">✦ листайте вниз ✦</div>
         </div>
 
-        <!-- ОБНОВЛЁННЫЙ БЛОК -->
         <div class="section fade-on-scroll">
             <div class="section-title">Дорогие друзья, родные и близкие!</div>
             <p class="text-center" style="font-size: 17px; line-height: 1.45; color: #4a4a6a;">
@@ -753,23 +769,28 @@
             </a>
         </div>
 
-        <div class="section fade-on-scroll">
+        <!-- НОВЫЙ ПЛАН ДНЯ (как на скриншоте) -->
+        <div class="section timeline-section fade-on-scroll">
             <div class="section-title">План дня</div>
-            <div class="timeline-item">
-                <div class="timeline-time">16:30</div>
-                <div class="timeline-desc">Сбор гостей <small>Встречаемся, обмениваемся улыбками</small></div>
+            <div class="timeline-item-new">
+                <div class="timeline-time-new">16:30</div>
+                <div class="timeline-desc-new">Сбор гостей <small>Встречаемся, обмениваемся улыбками</small></div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-time">17:00</div>
-                <div class="timeline-desc">Торжественная церемония <small>Самый трогательный момент</small></div>
+            <div class="timeline-item-new">
+                <div class="timeline-time-new">17:00</div>
+                <div class="timeline-desc-new">Торжественная церемония <small>Самый трогательный момент</small></div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-time">18:00</div>
-                <div class="timeline-desc">Свадебный ужин <small>Вкусные блюда и веселая программа</small></div>
+            <div class="timeline-item-new">
+                <div class="timeline-time-new">18:00</div>
+                <div class="timeline-desc-new">Поздравления и фуршет <small>Тёплые слова и вкусные угощения</small></div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-time">22:00</div>
-                <div class="timeline-desc">Завершение вечера <small>Оставляем только приятные воспоминания</small></div>
+            <div class="timeline-item-new">
+                <div class="timeline-time-new">19:00</div>
+                <div class="timeline-desc-new">Свадебный торт <small>Сладкий момент, который ждут все</small></div>
+            </div>
+            <div class="timeline-item-new">
+                <div class="timeline-time-new">20:00</div>
+                <div class="timeline-desc-new">Танцы и завершение вечера <small>Зажигаем до последнего!</small></div>
             </div>
         </div>
 

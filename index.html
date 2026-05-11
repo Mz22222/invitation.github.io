@@ -207,7 +207,7 @@
             opacity: 0.5;
         }
 
-        /* ГЛАВНАЯ СЕКЦИЯ — теперь тоже с fade-on-scroll */
+        /* ГЛАВНАЯ СЕКЦИЯ */
         .hero-section {
             text-align: center;
             padding: 2rem 1.5rem 2rem;
@@ -231,11 +231,12 @@
             text-align: center;
         }
 
+        /* Уменьшил расстояние между рамками */
         .photos-row {
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            gap: 2.2rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
             margin: 1rem 0 2rem;
         }
@@ -245,7 +246,6 @@
             text-align: center;
         }
 
-        /* Все поляроидные рамки с тенью */
         .polaroid-frame {
             background: #ffffff;
             padding: 8px 8px 12px 8px;
@@ -257,10 +257,11 @@
         }
 
         .polaroid-left {
-            transform: rotate(-4deg) translateY(-20px);
+            transform: rotate(-4deg) translateY(-15px);
         }
+        /* Поднял рамку невесты выше — было 95px, стало 65px */
         .polaroid-right {
-            transform: rotate(5deg) translateY(95px);
+            transform: rotate(5deg) translateY(65px);
         }
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
@@ -493,38 +494,43 @@
             color: #4a4a6a;
         }
 
-        /* Блок с отсчётом — без рамки */
-        .timer-box {
-            background: transparent;
-            padding: 1rem;
+        /* НОВЫЙ ТАЙМЕР — как на скриншоте, крупный шрифт */
+        .timer-section {
             text-align: center;
-            margin: 0.5rem 0;
-            border-radius: 0;
-            border: none;
+            margin: 1rem 0 1rem;
         }
-        .timer-digits {
-            font-family: 'Cormorant Garamond', monospace;
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: 4px;
+        .timer-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             color: #1a1a2e;
+            margin-bottom: 1.5rem;
         }
-        .timer-labels {
+        .timer-digits-big {
+            font-family: 'Cormorant Garamond', monospace;
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: 8px;
+            color: #1a1a2e;
+            margin-bottom: 0.8rem;
+        }
+        .timer-labels-big {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            margin-top: 0.5rem;
-            font-size: 0.65rem;
-            letter-spacing: 1px;
+            gap: 1.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
             color: #4a6fa5;
             text-transform: uppercase;
         }
-        .timer-labels span {
-            min-width: 60px;
+        .timer-labels-big span {
+            min-width: 65px;
             text-align: center;
         }
 
-        /* ПОСЛЕДНЯЯ РАМКА — с усиленной тенью */
+        /* ПОСЛЕДНЯЯ РАМКА */
         .last-photo-section {
             text-align: center;
             margin: 0.5rem 0 0;
@@ -592,21 +598,23 @@
                 max-width: 140px;
             }
             .photos-row {
-                gap: 1rem;
-                margin-bottom: 1.5rem;
+                gap: 0.8rem;
+            }
+            .polaroid-right {
+                transform: rotate(5deg) translateY(45px);
             }
             .kids-message {
-                margin: 8rem 0 1rem;
+                margin: 7rem 0 1rem;
             }
-            .timer-digits {
-                font-size: 1.4rem;
-                letter-spacing: 2px;
+            .timer-digits-big {
+                font-size: 2rem;
+                letter-spacing: 4px;
             }
-            .timer-labels {
-                gap: 0.5rem;
+            .timer-labels-big {
+                gap: 0.8rem;
             }
-            .timer-labels span {
-                min-width: 40px;
+            .timer-labels-big span {
+                min-width: 45px;
                 font-size: 0.55rem;
             }
             .timeline-desc {
@@ -672,7 +680,6 @@
 <!-- ОСНОВНАЯ СТРАНИЦА -->
 <div id="mainPage" class="main-page">
     <div class="main-container">
-        <!-- HERO СЕКЦИЯ — теперь тоже с fade-on-scroll -->
         <div class="hero-section" id="heroSection">
             <div class="story-tagline">❝ две истории, одна любовь ❞</div>
             
@@ -770,16 +777,15 @@
             </div>
         </div>
 
-        <div class="section fade-on-scroll">
-            <div class="section-title">До нашей встречи</div>
-            <div class="timer-box">
-                <div class="timer-digits" id="timerDisplay">00:00:00:00</div>
-                <div class="timer-labels">
-                    <span>ДНЕЙ</span>
-                    <span>ЧАСОВ</span>
-                    <span>МИНУТ</span>
-                    <span>СЕКУНД</span>
-                </div>
+        <!-- НОВЫЙ ТАЙМЕР в стиле скриншота -->
+        <div class="timer-section fade-on-scroll">
+            <div class="timer-title">ДО НАШЕЙ ВСТРЕЧИ</div>
+            <div class="timer-digits-big" id="timerDisplay">00:00:00:00</div>
+            <div class="timer-labels-big">
+                <span>ДНЕЙ</span>
+                <span>ЧАСОВ</span>
+                <span>МИНУТ</span>
+                <span>СЕКУНД</span>
             </div>
         </div>
 
@@ -925,7 +931,6 @@
             mainPageOpened = true;
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Анимация для hero-секции
             const heroSection = document.getElementById('heroSection');
             if (heroSection) {
                 heroSection.classList.add('visible');

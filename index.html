@@ -231,14 +231,13 @@
             text-align: center;
         }
 
-        /* Уменьшил расстояние между рамками */
         .photos-row {
             display: flex;
             justify-content: center;
             align-items: flex-start;
             gap: 1.2rem;
             flex-wrap: wrap;
-            margin: 1rem 0 2rem;
+            margin: 2rem 0 1rem;
         }
 
         .photo-item {
@@ -246,22 +245,23 @@
             text-align: center;
         }
 
+        /* РАМКИ УВЕЛИЧЕНЫ */
         .polaroid-frame {
             background: #ffffff;
-            padding: 8px 8px 12px 8px;
+            padding: 10px 10px 16px 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            max-width: 170px;
+            max-width: 195px;
             width: 100%;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid #d0d8e8;
         }
 
+        /* Фотки опущены ниже */
         .polaroid-left {
-            transform: rotate(-4deg) translateY(-15px);
+            transform: rotate(-4deg) translateY(-5px);
         }
-        /* Поднял рамку невесты выше — было 95px, стало 65px */
         .polaroid-right {
-            transform: rotate(5deg) translateY(65px);
+            transform: rotate(5deg) translateY(75px);
         }
         .polaroid-left:hover, .polaroid-right:hover {
             transform: rotate(0deg) translateY(0);
@@ -283,16 +283,17 @@
 
         .polaroid-caption {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            margin-top: 8px;
+            font-size: 0.9rem;
+            margin-top: 10px;
             color: #4a6fa5;
             letter-spacing: 0.5px;
             font-weight: 500;
         }
 
+        /* Уменьшил расстояние между рамкой невесты и текстом */
         .kids-message {
             text-align: center;
-            margin: 6rem 0 1rem;
+            margin: 3.5rem 0 1rem;
             clear: both;
         }
 
@@ -494,7 +495,7 @@
             color: #4a4a6a;
         }
 
-        /* НОВЫЙ ТАЙМЕР — как на скриншоте, крупный шрифт */
+        /* НОВЫЙ ТАЙМЕР */
         .timer-section {
             text-align: center;
             margin: 1rem 0 1rem;
@@ -595,16 +596,17 @@
                 padding: 1.5rem 1rem;
             }
             .polaroid-frame {
-                max-width: 140px;
+                max-width: 155px;
             }
             .photos-row {
                 gap: 0.8rem;
+                margin: 1.5rem 0 0.8rem;
             }
             .polaroid-right {
-                transform: rotate(5deg) translateY(45px);
+                transform: rotate(5deg) translateY(50px);
             }
             .kids-message {
-                margin: 7rem 0 1rem;
+                margin: 2.8rem 0 1rem;
             }
             .timer-digits-big {
                 font-size: 2rem;
@@ -630,7 +632,7 @@
                 font-size: 20px;
             }
             .story-tagline {
-                margin-bottom: 1.8rem;
+                margin-bottom: 1.5rem;
             }
             .cover-names-top, .cover-names-bottom {
                 font-size: 2.2rem;
@@ -777,7 +779,6 @@
             </div>
         </div>
 
-        <!-- НОВЫЙ ТАЙМЕР в стиле скриншота -->
         <div class="timer-section fade-on-scroll">
             <div class="timer-title">ДО НАШЕЙ ВСТРЕЧИ</div>
             <div class="timer-digits-big" id="timerDisplay">00:00:00:00</div>

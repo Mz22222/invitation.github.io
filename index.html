@@ -496,13 +496,14 @@
             color: #4a4a6a;
         }
 
+        /* Блок с отсчётом — без рамки, сливается с фоном */
         .timer-box {
-            background: #ffffff;
-            padding: 1.5rem;
+            background: transparent;
+            padding: 1rem;
             text-align: center;
-            margin: 1rem 0;
-            border-radius: 50px;
-            border: 1px solid #d0d8e8;
+            margin: 0.5rem 0;
+            border-radius: 0;
+            border: none;
         }
         .timer-digits {
             font-family: 'Cormorant Garamond', monospace;
@@ -526,7 +527,7 @@
             text-align: center;
         }
 
-        /* ТОЛЬКО ПОСЛЕДНЯЯ РАМКА — БОЛЬШЕ И БЛИЖЕ */
+        /* ПОСЛЕДНЯЯ РАМКА — с тенью */
         .last-photo-section {
             text-align: center;
             margin: 0.5rem 0 0;
@@ -534,15 +535,16 @@
         .last-polaroid {
             background: #ffffff;
             padding: 12px 12px 16px 12px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
             max-width: 260px;
             width: 100%;
             margin: 0 auto;
             border: 1px solid #d0d8e8;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .last-polaroid:hover {
             transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
         }
         .last-polaroid-inner {
             background: #fff;
@@ -643,7 +645,6 @@
             .seal-text {
                 font-size: 0.7rem;
             }
-            /* последняя рамка на мобильном — чуть меньше, но всё равно больше остальных */
             .last-polaroid {
                 max-width: 220px;
             }
@@ -771,6 +772,7 @@
             </div>
         </div>
 
+        <!-- Блок с отсчётом — без рамки -->
         <div class="section fade-on-scroll">
             <div class="section-title">До нашей встречи</div>
             <div class="timer-box">
@@ -784,7 +786,7 @@
             </div>
         </div>
 
-        <!-- ПОСЛЕДНЯЯ РАМКА — БОЛЬШЕ И ОТСТУПЫ МЕНЬШЕ -->
+        <!-- ПОСЛЕДНЯЯ РАМКА — с тенью -->
         <div class="last-photo-section fade-on-scroll">
             <div class="last-polaroid">
                 <div class="last-polaroid-inner">

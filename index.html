@@ -292,7 +292,6 @@
             font-weight: 500;
         }
 
-        /* блок про детей — увеличен отступ для телефона */
         .kids-message {
             text-align: center;
             margin: 6rem 0 1rem;
@@ -420,7 +419,6 @@
             color: #4a6fa5;
         }
 
-        /* ЛОКАЦИЯ — без индекса */
         .location-block {
             text-align: center;
         }
@@ -498,7 +496,6 @@
             color: #4a4a6a;
         }
 
-        /* Таймер */
         .timer-box {
             background: #ffffff;
             padding: 1.5rem;
@@ -529,37 +526,37 @@
             text-align: center;
         }
 
-        /* Дополнительная фотография */
-        .extra-photo-section {
+        /* ТОЛЬКО ПОСЛЕДНЯЯ РАМКА — БОЛЬШЕ И БЛИЖЕ */
+        .last-photo-section {
             text-align: center;
-            margin: 2rem 0 1rem;
+            margin: 0.5rem 0 0;
         }
-        .extra-polaroid {
+        .last-polaroid {
             background: #ffffff;
-            padding: 8px 8px 12px 8px;
+            padding: 12px 12px 16px 12px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-            max-width: 200px;
+            max-width: 260px;
             width: 100%;
             margin: 0 auto;
             border: 1px solid #d0d8e8;
             transition: transform 0.3s ease;
         }
-        .extra-polaroid:hover {
+        .last-polaroid:hover {
             transform: scale(1.02);
         }
-        .extra-polaroid-inner {
+        .last-polaroid-inner {
             background: #fff;
         }
-        .extra-polaroid-img {
+        .last-polaroid-img {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
             background-color: #e8edf5;
         }
-        .extra-polaroid-caption {
+        .last-polaroid-caption {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 10px;
             color: #4a6fa5;
             letter-spacing: 0.5px;
@@ -597,9 +594,8 @@
             }
             .photos-row {
                 gap: 1rem;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
-            /* Увеличен отступ для телефона, чтобы текст не налегал */
             .kids-message {
                 margin: 8rem 0 1rem;
             }
@@ -647,8 +643,9 @@
             .seal-text {
                 font-size: 0.7rem;
             }
-            .extra-polaroid {
-                max-width: 160px;
+            /* последняя рамка на мобильном — чуть меньше, но всё равно больше остальных */
+            .last-polaroid {
+                max-width: 220px;
             }
         }
     </style>
@@ -779,24 +776,24 @@
             <div class="timer-box">
                 <div class="timer-digits" id="timerDisplay">00:00:00:00</div>
                 <div class="timer-labels">
-                    <span>дней</span>
-                    <span>часов</span>
-                    <span>минут</span>
-                    <span>секунд</span>
+                    <span>ДНЕЙ</span>
+                    <span>ЧАСОВ</span>
+                    <span>МИНУТ</span>
+                    <span>СЕКУНД</span>
                 </div>
             </div>
         </div>
 
-        <!-- Дополнительная фотография -->
-        <div class="section extra-photo-section fade-on-scroll">
-            <div class="extra-polaroid">
-                <div class="extra-polaroid-inner">
-                    <img class="extra-polaroid-img" 
+        <!-- ПОСЛЕДНЯЯ РАМКА — БОЛЬШЕ И ОТСТУПЫ МЕНЬШЕ -->
+        <div class="last-photo-section fade-on-scroll">
+            <div class="last-polaroid">
+                <div class="last-polaroid-inner">
+                    <img class="last-polaroid-img" 
                          src="flowers.jpg" 
                          alt="Цветы"
                          onerror="this.onerror=null; this.src='https://placehold.co/300x300/e8edf5/4a6fa5?text=flowers'">
                 </div>
-                <div class="extra-polaroid-caption">Ждём вас!</div>
+                <div class="last-polaroid-caption">Ждём вас!</div>
             </div>
         </div>
 

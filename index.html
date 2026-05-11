@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
 
-        /* ===== ЗАСТАВКА-КОНВЕРТ (РАЗЪЕЗЖАЮЩАЯСЯ) ===== */
+        /* ===== ЗАСТАВКА-КОНВЕРТ ===== */
         .cover-page {
             position: fixed;
             top: 0;
@@ -242,7 +242,7 @@
             align-items: flex-start;
             gap: 2.2rem;
             flex-wrap: wrap;
-            margin: 1rem 0 4rem;
+            margin: 1rem 0 2rem;
         }
 
         .photo-item {
@@ -292,9 +292,10 @@
             font-weight: 500;
         }
 
+        /* блок про детей — отступ увеличен, чтобы не налегал на рамку */
         .kids-message {
             text-align: center;
-            margin: 5rem 0 1rem;
+            margin: 6rem 0 1rem;
             clear: both;
         }
 
@@ -419,8 +420,14 @@
             color: #4a6fa5;
         }
 
+        /* ЛОКАЦИЯ — обновлена */
         .location-block {
             text-align: center;
+        }
+        .location-label {
+            font-size: 16px;
+            color: #4a4a6a;
+            margin-bottom: 0.5rem;
         }
         .resto-name {
             font-size: 28px;
@@ -435,7 +442,7 @@
         }
         .map-button {
             display: inline-block;
-            margin-top: 1.2rem;
+            margin-top: 1.5rem;
             padding: 0.5rem 1.5rem;
             background: transparent;
             border: 1px solid #4a6fa5;
@@ -553,7 +560,10 @@
             }
             .photos-row {
                 gap: 1rem;
-                margin-bottom: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .kids-message {
+                margin: 4rem 0 0.8rem;
             }
             .timer-digits {
                 font-size: 1.4rem;
@@ -565,9 +575,6 @@
             .timer-labels span {
                 min-width: 40px;
                 font-size: 0.55rem;
-            }
-            .kids-message {
-                margin: 3.5rem 0 0.8rem;
             }
             .timeline-desc {
                 max-width: 60%;
@@ -689,11 +696,12 @@
             </div>
         </div>
 
+        <!-- ЛОКАЦИЯ — ОБНОВЛЕНА -->
         <div class="section location-block fade-on-scroll">
             <div class="section-title">Локация</div>
-            <div class="resto-name">Караван Сити</div>
+            <div class="location-label">Ждем вас по адресу</div>
+            <div class="resto-name">Ресторан "Караван Сити"</div>
             <div class="address-detail">Олимпийский проспект, вл39с1, Мытищи, Московская область, 141006</div>
-            <div class="divider-line" style="margin: 1.2rem auto;"></div>
             <a href="https://yandex.ru/maps/?text=Олимпийский+проспект+вл39с1+Мытищи&ll=37.731,55.911&z=16" target="_blank" rel="noopener noreferrer" class="map-button">
                 Посмотреть на карте
             </a>
